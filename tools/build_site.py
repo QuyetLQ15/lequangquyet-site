@@ -1,0 +1,92 @@
+"""Tạo các trang bài viết từ content/*/*.md, cập nhật danh sách trên trang chủ và sitemap.
+Chạy: python tools/build_site.py   (chỉ cần Python 3, không cần cài thêm gì)
+Thêm bài mới: tạo file .md trong content/mua-N/ (copy từ bài có sẵn), đặt published: yes, rồi chạy lệnh trên."""
+import re, os, json, html, datetime, shutil
+from string import Template
+from urllib.parse import quote
+ROOT=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+SITE='https://lequangquyet.com'
+def parse(path):
+    t=open(path,encoding='utf-8').read(); m=re.match(r'---\n(.*?)\n---\n(.*)',t,re.S); meta={}
+    for line in m.group(1).split('\n'):
+        k,_,v=line.partition(':'); meta[k.strip()]=v.strip()
+    meta['body']=m.group(2).strip(); meta['season']=int(meta['season']); meta['number']=int(meta['number']); meta.setdefault('series','Contact Center Insights'); return meta
+def inline(s):
+    s=html.escape(s,quote=False)
+    s=re.sub(r'\*\*(.+?)\*\*',r'<strong>\1</strong>',s)
+    return re.sub(r'\[([^\]]+)\]\((https?://[^)\s]+)\)',r'<a href="\2" target="_blank" rel="noopener">\1</a>',s)
+def render(body):
+    out=[]
+    for b in re.split(r'\n\s*\n',body):
+        L=b.split('\n')
+        if b.startswith('## '): out.append('<h2>%s</h2>'%inline(b[3:]))
+        elif all(l.startswith('- ') for l in L): out.append('<ul>'+''.join('<li%s>%s</li>'%(' class="emo"' if not l[2:3].isalnum() else '',inline(l[2:])) for l in L)+'</ul>')
+        else: out.append('<p>%s</p>'%inline(b).replace('\n','<br>'))
+    return '\n'.join(out)
+def plain(body): return re.sub(r'\s+',' ',re.sub(r'[#*\-]|\[|\]\(.*?\)','',body))
+def desc(body):
+    for b in re.split(r'\n\s*\n',body):
+        if len(b)>=70 and not b.startswith(('## ','- ')):
+            s=re.sub(r'\s+',' ',b); return s if len(s)<=155 else s[:155].rsplit(' ',1)[0]+'…'
+    return ''
+def fmt(d): return datetime.date.fromisoformat(d).strftime('%d/%m/%Y') if d else ''
+posts=[]
+for sd in sorted(os.listdir(os.path.join(ROOT,'content'))):
+    p=os.path.join(ROOT,'content',sd)
+    if os.path.isdir(p):
+        for f in sorted(os.listdir(p)):
+            if f.endswith('.md'):
+                m=parse(os.path.join(p,f))
+                if m['published']=='yes': posts.append(m)
+posts.sort(key=lambda m:(m['season'],m['number']))
+seen=set()
+for m in posts:
+    if m['slug'] in seen: m['slug']+='-mua-%d'%m['season']
+    seen.add(m['slug'])
+for old in ('insights','blog'): shutil.rmtree(os.path.join(ROOT,old),ignore_errors=True)
+def url(m): return 'blog/%s/'%m['slug']
+ART=Template(open(os.path.join(ROOT,'tools','article_template.html'),encoding='utf-8').read())
+def C(n,root): return Template(open(os.path.join(ROOT,'tools',n+'.html'),encoding='utf-8').read()).substitute(root=root)
+for i,m in enumerate(posts):
+    prv=posts[i-1] if i>0 and posts[i-1]['season']==m['season'] else None
+    nxt=posts[i+1] if i+1<len(posts) and posts[i+1]['season']==m['season'] else None
+    canon='%s/%s'%(SITE,url(m)); words=len(plain(m['body']).split()); mins=max(1,round(words/200))
+    ld={"@context":"https://schema.org","@type":"BlogPosting","headline":m['title'],"inLanguage":"vi-VN","datePublished":m['date'] or None,"dateModified":m['date'] or None,"mainEntityOfPage":canon,"image":SITE+"/assets/og-image.jpg","author":{"@id":SITE+"/#person"},"isPartOf":{"@type":"Blog","name":m["series"]}}
+    ld={k:v for k,v in ld.items() if v}
+    def pn(x,lab,cls): return '<a class="%s" href="../../%s">%s<strong>%s</strong></a>'%(cls,url(x),lab,html.escape(x['title'])) if x else '<span></span>'
+    li=('<a href="%s" target="_blank" rel="noopener">Xem bản gốc trên LinkedIn</a>'%m['linkedin']) if m.get('linkedin') else ''
+    page=ART.substitute(title=html.escape(m['title'])+' | Lê Quang Quyết',desc=html.escape(desc(m['body'])),canon=canon,h1=html.escape(m['title']),
+        crumb='%s · Mùa %d'%(html.escape(m['series']),m['season']),chapter=html.escape(m['chapter']),date=fmt(m['date']),iso=m['date'] or '',mins=mins,body=render(m['body']),meta=' · '.join(([('<time datetime="%s">%s</time>'%(m['date'],fmt(m['date'])))] if m['date'] else [])+['%d phút đọc'%mins,'Lê Quang Quyết']),pubmeta=('<meta property="article:published_time" content="%s">'%m['date']) if m['date'] else '',
+        ld=json.dumps(ld,ensure_ascii=False),share_li='https://www.linkedin.com/sharing/share-offsite/?url='+quote(canon,safe=''),share_fb='https://www.facebook.com/sharer/sharer.php?u='+quote(canon,safe=''),
+        canon_js=canon,header=C('header','../../'),footer=C('footer','../../'),float=C('float','../../'),prev=pn(prv,'Bài trước','pn'),next=pn(nxt,'Bài sau','pn r'),linkedin=li)
+    d=os.path.join(ROOT,url(m)); os.makedirs(d,exist_ok=True); open(os.path.join(d,'index.html'),'w',encoding='utf-8').write(page)
+# trang chủ
+S=open(os.path.join(ROOT,'index.html'),encoding='utf-8').read()
+def between(s,a,b,new): i=s.index(a)+len(a); j=s.index(b,i); return s[:i]+new+s[j:]
+STARTS=[(3,'Dành cho quản lý vận hành','Vì sao thời gian xử lý ngắn chưa chắc là tốt, và chỉ số nào phản ánh khách hàng được giải quyết thật sự.'),(7,'Dành cho QA và quản trị rủi ro','QA trong ngân hàng làm gì, và vì sao chỉ nghe một phần nhỏ cuộc gọi là chưa đủ.'),(14,'Dành cho lãnh đạo CNTT và CX','Khác biệt giữa có nhiều kênh và kết nối liền mạch, kèm một phép thử nhanh cho tổ chức của anh/chị.')]
+by={(m['season'],m['number']):m for m in posts}
+st=''.join('<li><span class="tag">%s</span><div><h3><a href="%s">%s</a></h3><p>%s</p></div></li>\n'%(tg,url(by[(1,n)]),html.escape(by[(1,n)]['title']),sm) for n,tg,sm in STARTS if (1,n) in by)
+S=between(S,'<!--START:begin-->','<!--START:end-->','\n<ul class="posts">\n'+st+'</ul>\n<p class="more"><a class="btn p" href="blog/">Xem tất cả bài viết</a></p>\n')
+S=between(S,'<!--HEADER:begin-->','<!--HEADER:end-->',C('header',''))
+S=between(S,'<!--FOOT:begin-->','<!--FOOT:end-->',C('footer',''))
+S=between(S,'<!--FLOAT:begin-->','<!--FLOAT:end-->',C('float',''))
+open(os.path.join(ROOT,'index.html'),'w',encoding='utf-8').write(S)
+# trang Blog
+groups=[]
+for m in posts:
+    g=(m['series'],m['season'])
+    if g not in groups: groups.append(g)
+groups=sorted(groups,key=lambda g:(g[0],-g[1]))
+multi=len({g[0] for g in groups})>1; key={g:'g%d'%i for i,g in enumerate(groups)}
+chips='<button type="button" aria-pressed="true" data-f="all">Tất cả</button>'+''.join('<button type="button" aria-pressed="false" data-f="%s">%s</button>'%(key[g],html.escape(('%s · Mùa %d'%g) if multi else 'Mùa %d'%g[1])) for g in groups)
+blocks=''
+for g in groups:
+    lis=''.join('<li data-t="%s"><span class="tag">%s</span><div><h3>%s<a href="%s/">%s</a></h3></div></li>\n'%(key[g],html.escape(m['chapter']),('#%s. '%m['label']) if m.get('label') else '',m['slug'],html.escape(m['title'])) for m in posts if (m['series'],m['season'])==g)
+    blocks+='<h3 class="season">%s · Mùa %d</h3>\n<ul class="posts">\n%s</ul>\n'%(html.escape(g[0]),g[1],lis)
+B=Template(open(os.path.join(ROOT,'tools','blog_template.html'),encoding='utf-8').read())
+bdesc='Các chuỗi bài viết về vận hành và công nghệ Contact Center cho ngân hàng, bảo hiểm, tài chính. %d bài viết, tìm theo từ khóa hoặc theo mùa.'%len(posts)
+os.makedirs(os.path.join(ROOT,'blog'),exist_ok=True)
+open(os.path.join(ROOT,'blog','index.html'),'w',encoding='utf-8').write(B.substitute(desc=bdesc,lead='Các chuỗi bài viết về vận hành và công nghệ Contact Center dành cho các anh/chị quản lý trong khối BFSI, và sẽ còn nhiều chủ đề khác.',count=len(posts),chips=chips,groups=blocks,header=C('header','../'),footer=C('footer','../'),float=C('float','../')))
+urls=[(SITE+'/','2026-11-05'),(SITE+'/blog/','2026-11-05')]+[(SITE+'/'+url(m),m['date'] or '2026-11-05') for m in posts]
+open(os.path.join(ROOT,'sitemap.xml'),'w',encoding='utf-8').write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join('  <url><loc>%s</loc><lastmod>%s</lastmod></url>\n'%u for u in urls)+'</urlset>\n')
+print('đã tạo %d trang bài viết và trang Blog'%len(posts))

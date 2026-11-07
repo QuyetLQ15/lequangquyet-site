@@ -1,0 +1,8 @@
+# Cài đặt riêng của PyCharm và file tạm
+.idea/
+__pycache__/
+*.pyc
+# Ghi chú nội bộ (có số liệu và tên khách hàng), không đưa lên GitHub công khai
+content/REVIEW.md
+# File Excel nguồn
+*.xlsx
