@@ -7,7 +7,7 @@ number: 8
 label: 32
 chapter: Omnichannel và AI
 date: 
-published: yes
+published: no
 kind: post
 linkedin: 
 ---

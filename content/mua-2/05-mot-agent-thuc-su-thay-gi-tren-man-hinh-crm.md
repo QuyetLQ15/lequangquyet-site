@@ -7,7 +7,7 @@ number: 5
 label: 29
 chapter: CRM và tích hợp
 date: 
-published: yes
+published: no
 kind: post
 linkedin: 
 ---

@@ -7,7 +7,7 @@ number: 15
 label: 39
 chapter: Triển khai và bài học
 date: 
-published: yes
+published: no
 kind: post
 linkedin: 
 ---

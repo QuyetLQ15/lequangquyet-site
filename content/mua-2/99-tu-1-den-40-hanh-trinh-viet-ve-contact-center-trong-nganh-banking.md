@@ -7,7 +7,7 @@ number: 99
 label: 
 chapter: Tổng kết
 date: 
-published: yes
+published: no
 kind: recap
 linkedin: 
 ---

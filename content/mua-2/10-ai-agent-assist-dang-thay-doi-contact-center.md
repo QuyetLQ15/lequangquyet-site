@@ -7,7 +7,7 @@ number: 10
 label: 34
 chapter: Omnichannel và AI
 date: 
-published: yes
+published: no
 kind: post
 linkedin: 
 ---

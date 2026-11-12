@@ -7,7 +7,7 @@ number: 13
 label: 37
 chapter: Triển khai và bài học
 date: 
-published: yes
+published: no
 kind: post
 linkedin: 
 ---

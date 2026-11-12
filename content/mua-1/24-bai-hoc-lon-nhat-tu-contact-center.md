@@ -10,6 +10,8 @@ date: 2026-06-09
 published: yes
 kind: post
 linkedin: 
+cover: assets/blog/bai-hoc-lon-nhat-tu-contact-center/cover.jpg
+cover_alt: Contact Center: Nơi con người giúp đỡ con người
 ---
 
 Hành trình 24 kỳ của series này đã đưa chúng ta đi qua một cuộc viễn chinh thực sự. Từ những chỉ số KPI khô khan, hệ thống CRM phức tạp, ma trận Omnichannel, Speech Analytics cho đến Agentic AI và tầm nhìn Contact Center 2030.
@@ -81,6 +83,8 @@ Khi Voicebot xử lý yêu cầu đơn giản → agent dành năng lượng cho
 Khi Speech Analytics phân tích 100% cuộc gọi → Supervisor biết chính xác ai đang cần hỗ trợ và đào tạo thêm.
 
 Công nghệ không cạnh tranh với con người. Công nghệ giải phóng con người.
+
+![Công nghệ làm được và chỉ con người làm được](assets/blog/bai-hoc-lon-nhat-tu-contact-center/hinh-1.jpg)
 
 Tại Minh Phúc Transformation, khi xây dựng hệ sinh thái OmiCX, OmiBot và OmiQC mục tiêu tối thượng chưa bao giờ là "thay thế" agent:
 

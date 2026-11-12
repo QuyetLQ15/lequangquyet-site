@@ -20,4 +20,7 @@ document.querySelectorAll('.blog .posts li').forEach(function(li){var ok=(cur===
 document.querySelectorAll('.blog h3.season').forEach(function(h){h.hidden=!h.nextElementSibling.querySelector('li:not([hidden])')});
 var c=$('cnt');if(c)c.textContent=n+' bài viết';var z=$('none');if(z)z.hidden=n>0}
 if(q){q.addEventListener('input',apply);chips.forEach(function(b){b.addEventListener('click',function(){cur=b.dataset.f;chips.forEach(function(x){x.setAttribute('aria-pressed',x===b)});apply()})})}
+var ac=document.querySelectorAll('.actchips button');
+ac.forEach(function(b){b.addEventListener('click',function(){ac.forEach(function(x){x.setAttribute('aria-pressed',x===b)});var f=b.dataset.f;
+document.querySelectorAll('.actlist .act').forEach(function(a){a.hidden=f!=='all'&&a.dataset.t!==f})})});
 })();

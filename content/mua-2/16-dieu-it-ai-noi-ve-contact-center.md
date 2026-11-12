@@ -7,7 +7,7 @@ number: 16
 label: 40
 chapter: Triển khai và bài học
 date: 
-published: yes
+published: no
 kind: post
 linkedin: 
 ---

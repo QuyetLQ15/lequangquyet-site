@@ -7,7 +7,7 @@ number: 3
 label: 27
 chapter: Kiến trúc hệ thống
 date: 
-published: yes
+published: no
 kind: post
 linkedin: 
 ---

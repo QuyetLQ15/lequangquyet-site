@@ -7,7 +7,7 @@ number: 0
 label: 
 chapter: Giới thiệu Mùa 2
 date: 
-published: yes
+published: no
 kind: intro
 linkedin: 
 ---

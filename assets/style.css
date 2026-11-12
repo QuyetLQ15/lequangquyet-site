@@ -361,3 +361,15 @@ img,svg,video{max-width:100%}
 }
 .links a{padding:11px 12px}
 .links a span{font-size:.76rem;overflow-wrap:break-word;word-break:normal}
+
+/* Ảnh bìa và ảnh minh họa trong bài viết */
+.cover,.art-body figure{margin:0 0 28px}
+.cover img,.art-body figure img{display:block;width:100%;height:auto;border-radius:14px;background:#e8eef5}
+.art-body figure figcaption{font-size:.85rem;color:#5b6b82;text-align:center;margin-top:8px}
+
+/* Hoạt động và thư viện ảnh */
+.act[hidden]{display:none}
+a.ph{text-decoration:none}
+.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:0 0 28px}.gallery figure{margin:0}.gallery img{aspect-ratio:3/2;object-fit:cover}
+@media(max-width:560px){.gallery{grid-template-columns:1fr}}
+.act h3 a{color:var(--ink);text-decoration:none}.act h3 a:hover{color:var(--teal);text-decoration:underline}
