@@ -9,7 +9,9 @@ chapter: CRM, Omnichannel và trải nghiệm
 date: 2026-05-12
 published: yes
 kind: post
-linkedin: 
+linkedin: https://www.linkedin.com/pulse/gi%E1%BB%AFa-k%E1%BB%B7-nguy%C3%AAn-m%E1%BB%99t-ch%E1%BA%A1m-t%E1%BA%A1i-sao-h%C3%A0ng-tri%E1%BB%87u-ng%C6%B0%E1%BB%9Di-v%E1%BA%ABn-ch%E1%BB%8Dn-quyet-le-vnlzc
+cover: assets/blog/tai-sao-nhieu-khach-hang-van-thich-goi-dien/cover.jpg
+cover_alt: Tại sao nhiều khách hàng vẫn thích gọi điện?
 ---
 
 Sáng hôm đó nhận được tin nhắn từ một người anh quen — làm kinh doanh, không liên quan gì đến ngành ngân hàng:
@@ -50,6 +52,8 @@ Hãy nhìn vào những tình huống khách hàng thường gọi hotline nhấ
 - 💳 Thẻ bị khóa đột ngột — đang đứng trước quầy thanh toán
 - 💸 Tài khoản bị trừ tiền không rõ lý do
 - 🔐 Nghi ngờ bị lừa đảo — cần khóa tài khoản khẩn cấp
+
+![Hình minh họa cho bài: Tại sao nhiều khách hàng vẫn thích gọi điện?](assets/blog/tai-sao-nhieu-khach-hang-van-thich-goi-dien/hinh-1.jpg)
 
 Điểm chung của tất cả những tình huống đó?
 

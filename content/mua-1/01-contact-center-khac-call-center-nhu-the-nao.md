@@ -9,7 +9,9 @@ chapter: Nền tảng vận hành
 date: 2026-03-12
 published: yes
 kind: post
-linkedin: 
+linkedin: https://www.linkedin.com/pulse/%C4%91%E1%BB%ABng-g%E1%BB%8Di-ch%C3%BAng-t%C3%B4i-l%C3%A0-tr%E1%BB%B1c-t%E1%BB%95ng-%C4%91%C3%A0i-n%E1%BA%BFu-b%E1%BA%A1n-ch%C6%B0a-bi%E1%BA%BFt-quyet-le-ahoqc
+cover: assets/blog/contact-center-khac-call-center-nhu-the-nao/cover.jpg
+cover_alt: Contact Center khác Call Center như thế nào?
 ---
 
 Rất nhiều người vẫn mặc định: Contact Center = Call Center = Tổng đài nghe gọi.

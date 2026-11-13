@@ -9,7 +9,9 @@ chapter: Dữ liệu, AI và tương lai
 date: 2026-05-28
 published: yes
 kind: post
-linkedin: 
+linkedin: https://www.linkedin.com/pulse/k%E1%BB%B7-nguy%C3%AAn-ai-t%E1%BB%95ng-%C4%91%C3%A0i-vi%C3%AAn-s%E1%BA%BD-b%E1%BB%8B-thay-th%E1%BA%BF-hay-%C4%91%C6%B0%E1%BB%A3c-gia-quyet-le-k0i3c
+cover: assets/blog/ai-se-thay-doi-contact-center-nhu-the-nao/cover.jpg
+cover_alt: AI sẽ thay đổi Contact Center như thế nào?
 ---
 
 Mỗi khi nhắc đến AI trong Contact Center, có 2 luồng phản ứng thường thấy:
@@ -51,6 +53,8 @@ Sau cuộc gọi: AI tự động tóm tắt, ghi chú vào CRM, tạo follow-up
 Kết quả: agent tập trung hoàn toàn vào lắng nghe và tư vấn thay vì vừa nghe vừa gõ tìm kiếm trên 3 4 5 tab.
 
 AI không chỉ là một hộp chat thông minh trên website. Trong một Contact Center hiện đại ngành BFSI AI hiện diện trong từng mili-giây của cuộc gọi trước, trong và sau khi agent kết nối với khách hàng.
+
+![Hình minh họa cho bài: AI sẽ thay đổi Contact Center như thế nào?](assets/blog/ai-se-thay-doi-contact-center-nhu-the-nao/hinh-1.jpg)
 
 Đây là 4 tầng AI đang thay đổi Contact Center từ tự động hóa đến thông minh hóa:
 

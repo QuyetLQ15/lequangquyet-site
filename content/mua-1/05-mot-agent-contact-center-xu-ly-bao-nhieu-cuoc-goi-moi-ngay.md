@@ -9,7 +9,9 @@ chapter: Nền tảng vận hành
 date: 2026-03-26
 published: yes
 kind: post
-linkedin: 
+linkedin: https://www.linkedin.com/pulse/70-cu%E1%BB%99c-g%E1%BB%8Ding%C3%A0y-con-s%E1%BB%91-bi%E1%BA%BFt-n%C3%B3i-v%E1%BB%81-%C3%A1p-l%E1%BB%B1c-kh%E1%BB%A7ng-khi%E1%BA%BFp-quyet-le-zvknc
+cover: assets/blog/mot-agent-contact-center-xu-ly-bao-nhieu-cuoc-goi-moi-ngay/cover.jpg
+cover_alt: Một agent Contact Center xử lý bao nhiêu cuộc gọi mỗi ngày?
 ---
 
 Trong giới vận hành Contact Center, con số 70 – 100 cuộc gọi/ngày/Agent thường được mang ra để chứng minh hiệu suất năng suất. Nhưng dưới góc nhìn của một người tư vấn giải pháp, tôi thấy ở đó một rủi ro tiềm ẩn cực lớn nếu không được quản trị đúng cách.

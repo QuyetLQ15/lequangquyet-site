@@ -9,7 +9,9 @@ chapter: CRM, Omnichannel và trải nghiệm
 date: 2026-04-28
 published: yes
 kind: post
-linkedin: 
+linkedin: https://www.linkedin.com/pulse/omnichannel-contact-center-%C4%91%E1%BB%ABng-nh%E1%BA%A7m-l%E1%BA%ABn-gi%E1%BB%AFa-c%C3%B3-nhi%E1%BB%81u-quyet-le-ttuuc
+cover: assets/blog/omnichannel-contact-center-la-gi/cover.jpg
+cover_alt: Omnichannel Contact Center là gì?
 ---
 
 Tuần trước, trước khi nghỉ lễ, em có ngồi trao đổi với một Giám đốc CSKH tại công ty bảo hiểm top 5 Việt Nam.
@@ -56,6 +58,8 @@ Nếu là Omnichannel thực thụ, agent nhấc máy:
 
 Khách hàng không nói gì. Nhưng họ ghi nhớ cảm giác đó. Đó là khoảng cách giữa "công ty này hiểu tôi" và "tôi phải giải thích lại một lần nữa."
 
+![Hình minh họa cho bài: Omnichannel Contact Center là gì?](assets/blog/omnichannel-contact-center-la-gi/hinh-1.jpg)
+
 Vậy tại sao Omnichannel thực thụ lại khó đến vậy?
 
 Vì bài toán không nằm ở số lượng kênh.
@@ -85,6 +89,8 @@ Và OmiCX của Minh Phúc Transformation chính là kiến trúc kết nối c�
 - → Đồng bộ ngữ cảnh realtime: Dù khách hàng chuyển kênh bao nhiêu lần, thông tin đi theo họ như một bóng hình
 - → Zero Context Loss: Chuyển từ chatbot sang agent, từ agent này sang agent khác — toàn bộ lịch sử được truyền đi nguyên vẹn
 - → Tích hợp sâu hệ thống ngân hàng: Core banking, thẻ, loyalty — hội tụ về một màn hình
+
+![Hình minh họa cho bài: Omnichannel Contact Center là gì?](assets/blog/omnichannel-contact-center-la-gi/hinh-2.jpg)
 
 Kết quả không chỉ là trải nghiệm khách hàng tốt hơn. Mà là agent làm việc thông minh hơn và doanh nghiệp ra quyết định dựa trên dữ liệu đầy đủ hơn.
 

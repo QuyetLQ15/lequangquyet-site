@@ -9,7 +9,9 @@ chapter: CRM, Omnichannel và trải nghiệm
 date: 2026-05-05
 published: yes
 kind: post
-linkedin: 
+linkedin: https://www.linkedin.com/pulse/kh%C3%A1ch-h%C3%A0ng-g%E1%BB%8Di-hotline-kh%C3%B4ng-c%E1%BA%A7n-b%E1%BA%A1n-gi%E1%BB%8Fi-h%E1%BB%8D-hi%E1%BB%83u-quyet-le-beedc
+cover: assets/blog/dieu-gi-khien-khach-hang-hai-long-nhat-khi-goi-hotline/cover.jpg
+cover_alt: Điều gì khiến khách hàng hài lòng nhất khi gọi hotline?
 ---
 
 Chúng ta đã cùng nhau đi qua 14 kỳ của series này.
@@ -35,6 +37,8 @@ Là cảm giác.
 Và đây là điều mà hầu hết Contact Center đang bỏ qua trong khi tối ưu hàng chục KPI mỗi ngày. Chúng ta đo AHT. Đo tỷ lệ bắt máy. Đo thời gian chờ. Nhưng cảm giác của khách hàng sau khi cúp máy — thứ quyết định họ có quay lại hay không — lại hiếm khi được đặt lên bàn cân.
 
 Nhiều anh/chị quản lý vẫn tin: "Chỉ cần giải quyết xong vấn đề, khách hàng sẽ hài lòng." Thực tế, dữ liệu CX cho thấy: Đó mới chỉ là phần nổi của tảng băng.
+
+![Hình minh họa cho bài: Điều gì khiến khách hàng hài lòng nhất khi gọi hotline?](assets/blog/dieu-gi-khien-khach-hang-hai-long-nhat-khi-goi-hotline/hinh-1.jpg)
 
 Nghiên cứu về Customer Experience chỉ ra 3 yếu tố khiến khách hàng thực sự hài lòng sau một cuộc gọi. Không phải 10. Không phải 20. Chỉ 3.
 

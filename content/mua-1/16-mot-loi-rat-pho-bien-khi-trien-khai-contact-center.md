@@ -9,7 +9,9 @@ chapter: CRM, Omnichannel và trải nghiệm
 date: 2026-05-07
 published: yes
 kind: post
-linkedin: 
+linkedin: https://www.linkedin.com/pulse/b%E1%BA%ABy-c%C3%B4ng-ngh%E1%BB%87-%C4%91%E1%BB%ABng-t%E1%BB%B1-%C4%91%E1%BB%99ng-h%C3%B3a-s%E1%BB%B1-h%E1%BB%97n-lo%E1%BA%A1n-quyet-le-bp8oc
+cover: assets/blog/mot-loi-rat-pho-bien-khi-trien-khai-contact-center/cover.jpg
+cover_alt: Một lỗi rất phổ biến khi triển khai Contact Center
 ---
 
 Nhiều doanh nghiệp chi hàng tỷ đồng cho hệ thống tổng đài hiện đại, tích hợp AI, triển khai Chatbot... nhưng cuối cùng vẫn thắc mắc tại sao CSAT (Sự hài lòng của khách hàng) vẫn thấp và Agent vẫn phàn nàn.
@@ -59,6 +61,8 @@ Nhất quán thông tin: Mọi Agent đều tiếp cận cùng một kịch bả
 Ghi nhận & Cải tiến: Hệ thống tự động chỉ ra đâu là khâu "nghẽn", giúp nhà quản lý tối ưu lại Process liên tục.
 
 Lời kết:
+
+![Hình minh họa cho bài: Một lỗi rất phổ biến khi triển khai Contact Center](assets/blog/mot-loi-rat-pho-bien-khi-trien-khai-contact-center/hinh-1.jpg)
 
 Trước khi mua thêm bất kỳ "công nghệ mới" nào, hãy dành thời gian rà soát lại quy trình (Process) của chính bạn. Hãy chuẩn hóa con người, tinh gọn quy trình, sau đó dùng công nghệ để khuếch đại sự xuất sắc đó.
 

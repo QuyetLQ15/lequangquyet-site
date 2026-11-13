@@ -9,7 +9,9 @@ chapter: CRM, Omnichannel và trải nghiệm
 date: 2026-04-21
 published: yes
 kind: post
-linkedin: 
+linkedin: https://www.linkedin.com/pulse/n%E1%BB%97i-%C4%91au-crm-ph%C3%A2n-m%E1%BA%A3nh-trong-contact-center-quyet-le-bllmc
+cover: assets/blog/crm-quan-trong-the-nao-voi-contact-center/cover.jpg
+cover_alt: CRM quan trọng thế nào với Contact Center?
 ---
 
 Tôi từng ngồi cạnh một Agent trong buổi shadow tại Contact Center của một ngân hàng lớn. Khách hàng gọi vào, nói tên, và Agent bắt đầu... tìm kiếm trên 3 màn hình khác nhau: Core banking, hệ thống thẻ, CRM riêng.
@@ -71,6 +73,8 @@ Agent Assist thời gian thực: AI nhận diện khách hàng ngay lập tức,
 Tự động hóa Workflow: Tự động tạo ticket, ghi chú và follow-up task, giải phóng Agent khỏi các tác vụ thủ công.
 
 Kết quả thực tế từ các triển khai trong ngành BFSI cho thấy: OmiCX giúp giảm 70% thời gian xử lý và tăng 45% độ hài lòng khách hàng. (Đây cũng là giải pháp vừa lọt Top 14 giải pháp Đổi mới sáng tạo AI tại Vietnam Innovation Challenge 2024).
+
+![Hình minh họa cho bài: CRM quan trọng thế nào với Contact Center?](assets/blog/crm-quan-trong-the-nao-voi-contact-center/hinh-1.jpg)
 
 Lời kết:
 

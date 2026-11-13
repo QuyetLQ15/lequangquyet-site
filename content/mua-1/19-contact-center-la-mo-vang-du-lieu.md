@@ -9,7 +9,9 @@ chapter: Dữ liệu, AI và tương lai
 date: 2026-05-19
 published: yes
 kind: post
-linkedin: 
+linkedin: https://www.linkedin.com/pulse/m%E1%BB%8F-v%C3%A0ng-l%E1%BB%9Bn-nh%E1%BA%A5t-c%E1%BB%A7a-doanh-nghi%E1%BB%87p-%C4%91ang-b%E1%BB%8B-b%E1%BB%8F-qu%C3%AAn-m%E1%BB%97i-quyet-le-9rhwc
+cover: assets/blog/contact-center-la-mo-vang-du-lieu/cover.jpg
+cover_alt: Contact Center là “mỏ vàng dữ liệu”
 ---
 
 Hầu hết nhà quản lý nhìn vào Contact Center và thấy những con số vận hành:
@@ -104,6 +106,8 @@ Nó nằm trong 10.000 cuộc gọi đang được ghi âm mỗi ngày.
 
 Nhưng dữ liệu chỉ có giá trị khi được thu thập đúng, xử lý sạch và phân tích sâu.
 
+![Hình minh họa cho bài: Contact Center là “mỏ vàng dữ liệu”](assets/blog/contact-center-la-mo-vang-du-lieu/hinh-1.jpg)
+
 Đây là nơi bộ ba giải pháp của Minh Phúc Transformation tạo ra vòng tròn khép kín từ "mỏ vàng thô" đến "báo cáo chiến lược":
 
 OmiCX nhiệm vụ tập hợp và làm sạch dữ liệu tại gốc
@@ -133,6 +137,8 @@ Khi tiếng nói khách hàng được lắng nghe và phân tích đúng cách 
 Và trong ngành BFSI, nơi hiểu khách hàng nhanh hơn đối thủ một ngày có thể tạo ra lợi thế cạnh tranh khổng lồ
 
 Mỗi cuộc gọi không được phân tích là một cơ hội bị bỏ lỡ.
+
+![Hình minh họa cho bài: Contact Center là “mỏ vàng dữ liệu”](assets/blog/contact-center-la-mo-vang-du-lieu/hinh-2.jpg)
 
 Rất mong nghe góc nhìn thực tế từ anh/chị đang vận hành Contact Center 👇
 

@@ -9,7 +9,7 @@ chapter: Dữ liệu, AI và tương lai
 date: 2026-06-09
 published: yes
 kind: post
-linkedin: 
+linkedin: https://www.linkedin.com/pulse/gi%E1%BB%AFa-t%C3%A2m-b%C3%A3o-ai-gi%C3%A1-tr%E1%BB%8B-c%E1%BB%A7a-m%E1%BB%99t-agent-l%C3%A0-nh%C6%B0-th%E1%BA%BF-n%C3%A0o-quyet-le-t5ubc
 cover: assets/blog/bai-hoc-lon-nhat-tu-contact-center/cover.jpg
 cover_alt: Contact Center: Nơi con người giúp đỡ con người
 ---

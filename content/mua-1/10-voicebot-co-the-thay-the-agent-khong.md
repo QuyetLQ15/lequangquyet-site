@@ -9,7 +9,9 @@ chapter: Chất lượng và chi phí
 date: 2026-04-14
 published: yes
 kind: post
-linkedin: 
+linkedin: https://www.linkedin.com/pulse/voicebot-c%C3%B3-thay-th%E1%BA%BF-ho%C3%A0n-to%C3%A0n-con-ng%C6%B0%E1%BB%9Di-c%C3%A1i-b%E1%BA%AFt-tay-chi%E1%BA%BFn-quyet-le-7qkbc
+cover: assets/blog/voicebot-co-the-thay-the-agent-khong/cover.jpg
+cover_alt: Voicebot có thể thay thế agent không?
 ---
 
 Ở Kỳ #9, chúng ta đã bóc tách "tảng băng chìm" chi phí nhân sự chiếm tới 70% ngân sách vận hành. Câu hỏi đặt ra ngay sau đó là: "Vậy Voicebot có phải là 'phép màu' thay thế hoàn toàn Agent để xóa sổ chi phí này không?"
@@ -17,6 +19,8 @@ linkedin:
 Với kinh nghiệm triển khai hệ thống trợ lý ảo tại MPT, câu trả lời chân thực nhất của tôi là: KHÔNG. Nhưng ý nghĩa của nó còn lớn hơn cả sự thay thế.
 
 1. AI không thay thế con người, AI làm những việc "nhàm chán" thay con người
+
+![Hình minh họa cho bài: Voicebot có thể thay thế agent không?](assets/blog/voicebot-co-the-thay-the-agent-khong/hinh-1.jpg)
 
 Thực tế, 80% lưu lượng cuộc gọi vào Contact Center thường xoay quanh các yêu cầu lặp đi lặp lại: tra cứu số dư, kiểm tra tình trạng đơn hàng, hay reset mật khẩu.
 
@@ -45,6 +49,8 @@ Tăng gấp 5 lần doanh thu sau 6 tháng nhờ giải phóng Agent khỏi khâ
 Lời kết:
 
 Voicebot không cướp đi công việc của Agent, nó trả lại cho Agent những công việc đúng nghĩa con người hơn: xử lý khiếu nại phức tạp, tư vấn tài chính chuyên sâu và xây dựng sự thấu cảm với khách hàng.
+
+![Hình minh họa cho bài: Voicebot có thể thay thế agent không?](assets/blog/voicebot-co-the-thay-the-agent-khong/hinh-2.jpg)
 
 Tại MPT, chúng tôi gọi đó là mô hình "Human-in-the-loop" – nơi AI làm nền tảng tốc độ và con người làm đỉnh cao chất lượng.
 

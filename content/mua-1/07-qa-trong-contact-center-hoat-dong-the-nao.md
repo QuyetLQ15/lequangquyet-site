@@ -9,7 +9,9 @@ chapter: Chất lượng và chi phí
 date: 2026-04-02
 published: yes
 kind: post
-linkedin: 
+linkedin: https://www.linkedin.com/pulse/qa-trong-contact-center-chi%E1%BA%BFc-k%C3%ADnh-hi%E1%BB%83n-vi-hay-ch%E1%BB%89-l%C3%A0-quyet-le-gv1sc
+cover: assets/blog/qa-trong-contact-center-hoat-dong-the-nao/cover.jpg
+cover_alt: QA trong Contact Center hoạt động thế nào?
 ---
 
 Sau khi bàn về áp lực 70 cuộc gọi/ngày (#5) và hệ quả Burnout (#6), câu hỏi đặt ra là: Làm thế nào để đảm bảo trong hàng vạn cuộc gọi đầy áp lực đó, khách hàng vẫn nhận được dịch vụ chuẩn mực và an toàn?

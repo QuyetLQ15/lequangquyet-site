@@ -9,7 +9,9 @@ chapter: CRM, Omnichannel và trải nghiệm
 date: 2026-04-23
 published: yes
 kind: post
-linkedin: 
+linkedin: https://www.linkedin.com/pulse/kh%C3%A1ch-h%C3%A0ng-kh%C3%B4ng-gh%C3%A9t-ch%E1%BB%9D-%C4%91%E1%BB%A3i-h%E1%BB%8D-ph%E1%BA%A3i-k%E1%BB%83-l%E1%BA%A1i-c%C3%A2u-chuy%E1%BB%87n-quyet-le-zo7gc
+cover: assets/blog/vi-sao-khach-hang-ghet-phai-lap-lai-thong-tin/cover.jpg
+cover_alt: Vì sao khách hàng ghét phải lặp lại thông tin?
 ---
 
 Bạn đã từng trải qua cảnh này chưa? — có thể bạn đã từng là nhân vật chính trong đó.
@@ -31,6 +33,8 @@ Bạn dừng lại một giây.
 Tại khoảnh khắc đó, sự kiên nhẫn – dù là vị khách dễ tính nhất – cũng bắt đầu "tụt dốc". Đây không phải lỗi của Agent. Đây là lỗi của một hệ thống vận hành đang bị "đứt gãy".
 
 ## 1. "Lỗ hổng" chết người trong hành trình trải nghiệm
+
+![Hình minh họa cho bài: Vì sao khách hàng ghét phải lặp lại thông tin?](assets/blog/vi-sao-khach-hang-ghet-phai-lap-lai-thong-tin/hinh-1.jpg)
 
 Sự bực bội của khách hàng khi phải lặp lại thông tin là bằng chứng cho thấy doanh nghiệp đang quản trị theo kiểu "silo" (ốc đảo thông tin). Đây là "lỗ hổng chết người" đang xảy ra phía sau mỗi cuộc gọi như vậy:
 
@@ -65,6 +69,8 @@ Khi hệ thần kinh hoạt động đúng, agent nhấc máy đã biết:
 Không hỏi lại. Không kể lại. Không chờ thêm. Dữ liệu không đứng yên — dữ liệu phải chảy theo khách hàng.
 
 ## 3. OmiCX – "Nhạc trưởng" điều phối trải nghiệm
+
+![Hình minh họa cho bài: Vì sao khách hàng ghét phải lặp lại thông tin?](assets/blog/vi-sao-khach-hang-ghet-phai-lap-lai-thong-tin/hinh-2.jpg)
 
 Đây là lý do tôi tiếp tục nhắc đến OmiCX của Minh Phúc Transformation trong bài này.
 

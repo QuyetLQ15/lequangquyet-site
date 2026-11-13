@@ -9,7 +9,9 @@ chapter: Nền tảng vận hành
 date: 2026-03-19
 published: yes
 kind: post
-linkedin: 
+linkedin: https://www.linkedin.com/pulse/90-contact-center-%C4%91ang-%C4%91o-kpi-sai-quyet-le-ephzc
+cover: assets/blog/nhieu-contact-center-dang-do-sai-kpi/cover.jpg
+cover_alt: Nhiều Contact Center đang đo sai KPI?
 ---
 
 90% Contact Center đang đo KPI sai ?
@@ -34,9 +36,9 @@ Thay vì hỏi "Agent xử lý nhanh bao lâu?", hãy hỏi: "Bao nhiêu khách 
 
 Tại sao FCR mới là "vua" của các chỉ số?
 
-- ✅ Tiết kiệm chi phí: Giảm lượng cuộc gọi lặp lại là cách giảm OPEX bền vững nhất.
-- ✅ Tăng lòng trung thành: Khách hàng đánh giá cao sự thấu hiểu và hiệu quả hơn là sự vội vã.
-- ✅ Giảm áp lực cho Agent: Agent không bị rơi vào vòng xoáy giải thích đi giải thích lại một vấn đề.
+- ✅ Tiết kiệm chi phí: Giảm lượng cuộc gọi lặp lại là cách giảm OPEX bền vững nhất. Giảm 1% cuộc gọi lặp lại có giá trị hơn nhiều so với việc giảm 10 giây AHT.
+- ✅ Tăng lòng trung thành: Khách hàng Banking cần sự tin cậy hơn là tốc độ. Một lần giải quyết triệt để giúp giữ chân khách hàng tốt hơn vạn lời xin lỗi vì âm thanh bận máy.
+- ✅ Giảm áp lực cho Agent: Agent không phải xử lý lại những "đống rác" thông tin cũ. Môi trường làm việc tích cực, chuyên nghiệp hơn cũng giúp giảm áp lực tuyển dụng và đào tạo mới.
 
 Lời kết:
 

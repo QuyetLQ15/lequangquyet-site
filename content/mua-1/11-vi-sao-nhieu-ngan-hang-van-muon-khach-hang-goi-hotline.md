@@ -9,10 +9,14 @@ chapter: Chất lượng và chi phí
 date: 2026-04-16
 published: yes
 kind: post
-linkedin: 
+linkedin: https://www.linkedin.com/pulse/v%C3%AC-sao-gi%E1%BB%AFa-k%E1%BB%B7-nguy%C3%AAn-digital-ng%C3%A2n-h%C3%A0ng-v%E1%BA%ABn-mu%E1%BB%91n-b%E1%BA%A1n-g%E1%BB%8Di-quyet-le-frw9c
+cover: assets/blog/vi-sao-nhieu-ngan-hang-van-muon-khach-hang-goi-hotline/cover.jpg
+cover_alt: Vì sao nhiều ngân hàng vẫn muốn khách hàng gọi hotline?
 ---
 
 Trong các kỳ trước, chúng ta đã nói nhiều về việc giảm tải cho Contact Center thông qua Automation (#Kỳ 9) và Voicebot (#Kỳ 10). Vậy phải chăng Hotline đang dần "lỗi thời"?
+
+![Hình minh họa cho bài: Vì sao nhiều ngân hàng vẫn muốn khách hàng gọi hotline?](assets/blog/vi-sao-nhieu-ngan-hang-van-muon-khach-hang-goi-hotline/hinh-1.jpg)
 
 Ngược lại. Trong ngành Ngân hàng, Hotline không chỉ là một kênh liên lạc, nó là "Pháo đài bảo mật" và "Điểm tựa niềm tin" cuối cùng của khách hàng.
 

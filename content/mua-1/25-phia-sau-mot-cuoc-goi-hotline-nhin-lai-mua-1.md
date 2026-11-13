@@ -9,7 +9,9 @@ chapter: Tổng kết
 date: 2026-06-11
 published: yes
 kind: recap
-linkedin: 
+linkedin: https://www.linkedin.com/pulse/ph%25C3%25ADa-sau-m%25E1%25BB%2599t-cu%25E1%25BB%2599c-g%25E1%25BB%258Di-hotline-nh%25C3%25ACn-l%25E1%25BA%25A1i-season-1-quyet-le-wdyjc
+cover: assets/blog/phia-sau-mot-cuoc-goi-hotline-nhin-lai-mua-1/cover.jpg
+cover_alt: Phía sau một cuộc gọi hotline: nhìn lại Mùa 1
 ---
 
 Với hầu hết khách hàng, câu trả lời rất đơn giản:
@@ -82,6 +84,8 @@ Hơn 3 tháng trước, mình bắt đầu series Contact Center Insight với m
 #23 Agentic AI và tầm nhìn 2030 Contact Center trở thành "trạm điều phối trải nghiệm"
 
 #24 Bài học lớn nhất công nghệ quyết định tốc độ, con người quyết định niềm tin
+
+![Hình minh họa cho bài: Phía sau một cuộc gọi hotline: nhìn lại Mùa 1](assets/blog/phia-sau-mot-cuoc-goi-hotline-nhin-lai-mua-1/hinh-1.jpg)
 
 💡 4 ĐÚC KẾT "VÀNG" SAU 24 KỲ
 

@@ -191,6 +191,8 @@ if acts:
     open(os.path.join(ROOT,'hoat-dong','index.html'),'w',encoding='utf-8').write(LT.substitute(desc=adesc,lead='Những chương trình và sự kiện tôi tham gia cùng đồng nghiệp, đối tác và cộng đồng.',chips=chips,cards=''.join(card(a,'','../') for a in acts),header=C('header','../'),footer=C('footer','../'),float=C('float','../')))
 S2=open(os.path.join(ROOT,'index.html'),encoding='utf-8').read()
 S2=between(S2,'<!--ACT:begin-->','<!--ACT:end-->','\n'+(''.join(tile(a,'hoat-dong/','') for a in acts[:3]) or '<p>Nội dung đang được cập nhật.</p>\n'))
+# số bài viết tự đếm theo các bài published (mọi mùa), giữ dấu +
+S2=re.sub(r'<b data-n="\d+"( data-s="\+")?>\d+\+?</b>(<span>bài viết)',lambda m:'<b data-n="%d" data-s="+">%d+</b>%s'%(len(posts),len(posts),m.group(2)),S2)
 S2=re.sub(r'(data-since="(\d{4})"[^>]*>)\d+',lambda m:m.group(1)+str(datetime.date.today().year-int(m.group(2))),S2)
 open(os.path.join(ROOT,'index.html'),'w',encoding='utf-8').write(S2)
 urls=[(SITE+'/',TODAY),(SITE+'/blog/',TODAY)]+([(SITE+'/hoat-dong/',TODAY)] if acts else [])+[(SITE+'/'+url(m),m['date'] or TODAY) for m in posts]+[(SITE+'/'+aurl(a),a.get('date') or TODAY) for a in acts]

@@ -9,7 +9,9 @@ chapter: Chất lượng và chi phí
 date: 2026-04-07
 published: yes
 kind: post
-linkedin: 
+linkedin: https://www.linkedin.com/pulse/t%E1%BB%AB-2-may-r%E1%BB%A7i-%C4%91%E1%BA%BFn-100-s%E1%BB%B1-th%E1%BA%ADt-omiqc-%C4%91%C3%A3-t%C3%A1i-%C4%91%E1%BB%8Bnh-ngh%C4%A9a-qu%E1%BA%A3n-quyet-le-w4glc
+cover: assets/blog/van-de-lon-nhat-cua-qa-thu-cong/cover.jpg
+cover_alt: Vấn đề lớn nhất của QA thủ công
 ---
 
 Ở Kỳ #7, chúng ta đã cùng nhìn thẳng vào "gót chân Achilles" của QA truyền thống: Việc chỉ có thể nghe lại 1% - 3% cuộc gọi khiến doanh nghiệp hoàn toàn "mù tốn" với 97% dữ liệu còn lại.

@@ -9,7 +9,9 @@ chapter: Nền tảng vận hành
 date: 2026-03-31
 published: yes
 kind: post
-linkedin: 
+linkedin: https://www.linkedin.com/pulse/%C4%91%E1%BB%ABng-tr%C3%A1ch-agent-thi%E1%BA%BFu-g%E1%BA%AFn-b%C3%B3-h%C3%A3y-quy-tr%C3%ACnh-%C4%91ang-v%E1%BA%AFt-ki%E1%BB%87t-quyet-le-gwq4c
+cover: assets/blog/burnout-trong-contact-center/cover.jpg
+cover_alt: Burnout trong Contact Center
 ---
 
 Ở Kỳ #5, chúng ta đã bóc tách con số "biết nói": 70 cuộc gọi/ngày. Đó là 70 lần đối mặt với áp lực, 70 lần xử lý "rác thải cảm xúc" và 70 lần gồng mình nhập liệu chính xác.

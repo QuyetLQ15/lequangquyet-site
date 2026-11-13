@@ -9,7 +9,9 @@ chapter: Dữ liệu, AI và tương lai
 date: 2026-05-21
 published: yes
 kind: post
-linkedin: 
+linkedin: https://www.linkedin.com/pulse/b%C3%AD-quy%E1%BA%BFt-bi%E1%BA%BFn-contact-center-th%C3%A0nh-c%E1%BB%97-m%C3%A1y-t%C4%83ng-tr%C6%B0%E1%BB%9Fng-quyet-le-lyjxc
+cover: assets/blog/contact-center-co-the-giup-tang-doanh-thu/cover.jpg
+cover_alt: Contact Center có thể giúp tăng doanh thu
 ---
 
 Trong hầu hết các cuộc họp tài chính tại ngân hàng và công ty bảo hiểm, Contact Center thường bị dán một nhãn duy nhất:
@@ -61,6 +63,8 @@ Khách hàng gọi vào hỏi tài khoản tiết kiệm → Agent giới thiệ
 Khách hàng báo mất thẻ, yêu cầu cấp lại → Agent tư vấn nâng cấp lên thẻ tín dụng cao cấp hơn với nhiều quyền lợi hơn.
 
 Khách hàng hỏi về khoản vay → Agent cross-sell bảo hiểm khoản vay vừa bảo vệ khách hàng, vừa tăng giá trị hợp đồng.
+
+![Hình minh họa cho bài: Contact Center có thể giúp tăng doanh thu](assets/blog/contact-center-co-the-giup-tang-doanh-thu/hinh-1.jpg)
 
 Đây không phải bán hàng ép buộc. Đây là tư vấn đúng lúc, đúng người, đúng nhu cầu. Và đó chính xác là lý do tỷ lệ chuyển đổi từ kênh hotline thường cao hơn nhiều so với email marketing hay quảng cáo digital vì khách hàng đang chủ động tương tác, không phải bị làm phiền.
 

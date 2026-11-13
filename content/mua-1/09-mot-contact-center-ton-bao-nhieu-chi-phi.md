@@ -9,7 +9,9 @@ chapter: Chất lượng và chi phí
 date: 2026-04-09
 published: yes
 kind: post
-linkedin: 
+linkedin: https://www.linkedin.com/pulse/contact-center-chi%E1%BA%BFm-bao-nhi%C3%AAu-chi-ph%C3%AD-s%E1%BB%B1-th%E1%BA%ADt-v%E1%BB%81-c%E1%BB%97-m%C3%A1y-quyet-le-ojgac
+cover: assets/blog/mot-contact-center-ton-bao-nhieu-chi-phi/cover.jpg
+cover_alt: Một Contact Center tốn bao nhiêu chi phí?
 ---
 
 Nhiều người thường lầm tưởng rằng chi phí vận hành Contact Center chủ yếu nằm ở hệ thống phần cứng, máy móc hay phần mềm đắt đỏ.
@@ -49,5 +51,7 @@ Giảm số lượng cuộc gọi vào không có nghĩa là giảm chất lư�
 Nhưng làm sao để tự động hóa mà vẫn giữ được sự "tự nhiên" và "thông minh" như người thật? Làm sao để bộ máy vận hành vẫn mượt mà khi cắt giảm được hàng nghìn cuộc gọi lặp lại mỗi ngày?
 
 Ở kỳ tiếp theo (Kỳ #10), mình sẽ bật mí về "nhân viên xuất sắc nhất" của hệ sinh thái MPT – OmiBot. Đây chính là giải pháp giúp doanh nghiệp tiết kiệm hàng tỷ đồng chi phí nhân sự mà vẫn khiến khách hàng hài lòng 24/7.
+
+![Hình minh họa cho bài: Một Contact Center tốn bao nhiêu chi phí?](assets/blog/mot-contact-center-ton-bao-nhieu-chi-phi/hinh-1.jpg)
 
 👉 Góc thảo luận: Theo các anh chị, giữa việc "tăng lương để giữ người" và "đầu tư công nghệ để giảm người", đâu là chiến lược bền vững hơn cho một Contact Center 300 nhân sự?

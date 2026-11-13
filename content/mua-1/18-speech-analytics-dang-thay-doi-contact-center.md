@@ -9,7 +9,9 @@ chapter: Dữ liệu, AI và tương lai
 date: 2026-05-14
 published: yes
 kind: post
-linkedin: 
+linkedin: https://www.linkedin.com/pulse/h%C3%A0ng-ngh%C3%ACn-gi%E1%BB%9D-d%E1%BB%AF-li%E1%BB%87u-v%C3%A0ng-98-%C4%91ang-n%E1%BA%B1m-ch%E1%BA%BFt-m%E1%BB%97i-ng%C3%A0y-quyet-le-1jswc
+cover: assets/blog/speech-analytics-dang-thay-doi-contact-center/cover.jpg
+cover_alt: Speech Analytics đang thay đổi Contact Center
 ---
 
 Hãy thử một phép tính đơn giản:
@@ -41,6 +43,8 @@ Cho đến khi Speech Analytics xuất hiện và biến kho dữ liệu im lìm
 Speech Analytics không phải chỉ là "chuyển giọng nói thành văn bản."
 
 Nếu cách làm truyền thống giống như "mò kim đáy bể" thì Speech Analytics là chiếc nam châm khổng lồ, tự động hút ra mọi thứ quan trọng từ 100% cuộc gọi.
+
+![Hình minh họa cho bài: Speech Analytics đang thay đổi Contact Center](assets/blog/speech-analytics-dang-thay-doi-contact-center/hinh-1.jpg)
 
 Đây là 3 tầng giá trị mà công nghệ này tạo ra:
 

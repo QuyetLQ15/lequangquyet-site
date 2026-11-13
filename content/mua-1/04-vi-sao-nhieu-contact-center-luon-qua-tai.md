@@ -9,7 +9,9 @@ chapter: Nền tảng vận hành
 date: 2026-03-24
 published: yes
 kind: post
-linkedin: 
+linkedin: https://www.linkedin.com/pulse/nh%E1%BA%A1c-ch%E1%BB%9D-5-ph%C3%BAt-c%C3%A1ch-nhanh-nh%E1%BA%A5t-%C4%91%E1%BB%83-gi%E1%BA%BFt-ch%E1%BA%BFt-m%E1%BB%99t-th%C6%B0%C6%A1ng-quyet-le-jmxhc
+cover: assets/blog/vi-sao-nhieu-contact-center-luon-qua-tai/cover.jpg
+cover_alt: Vì sao nhiều Contact Center luôn quá tải?
 ---
 
 Bạn đã bao giờ tự hỏi: Tại sao một ngân hàng có hàng nghìn nhân sự, đầu tư hàng triệu USD vào Marketing, nhưng khách hàng lại phải chờ đợi "vô vọng" mỗi khi gọi lên Hotline?

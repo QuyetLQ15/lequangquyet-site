@@ -9,7 +9,9 @@ chapter: Dữ liệu, AI và tương lai
 date: 2026-06-04
 published: yes
 kind: post
-linkedin: 
+linkedin: https://www.linkedin.com/pulse/contact-center-t%E1%BA%A7m-nh%C3%ACn-2030-s%E1%BB%B1-tr%E1%BB%97i-d%E1%BA%ADy-c%E1%BB%A7a-agentic-ai-quyet-le-6vybc
+cover: assets/blog/tuong-lai-cua-contact-center/cover.jpg
+cover_alt: Tương lai của Contact Center
 ---
 
 Suốt 22 kỳ của series này, chúng ta đã đi qua toàn bộ bức tranh Contact Center hiện tại:
@@ -96,6 +98,8 @@ Contact Center sẽ chính thức rũ bỏ lớp áo cũ "nơi trả lời cuộ
 Trở thành trung tâm intelligence nơi toàn bộ insight về khách hàng được tổng hợp, phân tích và phân phối cho mọi quyết định chiến lược của tổ chức.
 
 Từ "Cost Center" → "Revenue Center" → "Intelligence Center."
+
+![Hình minh họa cho bài: Tương lai của Contact Center](assets/blog/tuong-lai-cua-contact-center/hinh-1.jpg)
 
 Vậy doanh nghiệp BFSI Việt Nam cần chuẩn bị gì ngay hôm nay?
 

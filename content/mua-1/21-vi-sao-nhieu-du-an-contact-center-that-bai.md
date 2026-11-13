@@ -9,7 +9,9 @@ chapter: Dữ liệu, AI và tương lai
 date: 2026-05-26
 published: yes
 kind: post
-linkedin: 
+linkedin: https://www.linkedin.com/pulse/c%C3%B4ng-ngh%E1%BB%87-x%E1%BB%8Bn-ng%C3%A2n-s%C3%A1ch-kh%E1%BB%A7ng-v%E1%BA%ABn-th%E1%BA%A5t-b%E1%BA%A1i-quyet-le-82tlc
+cover: assets/blog/vi-sao-nhieu-du-an-contact-center-that-bai/cover.jpg
+cover_alt: Vì sao nhiều dự án Contact Center thất bại?
 ---
 
 Trong hơn 7 năm làm việc trong ngành, có một pattern lặp đi lặp lại mà không ít lần được chứng kiến:
@@ -95,6 +97,8 @@ HR khi tuyển dụng và đào tạo không theo kịp tiến độ triển kha
 Một dự án Contact Center không phải dự án của IT hay CS.
 
 Đó là dự án của toàn tổ chức và cần được quản trị như vậy.
+
+![Hình minh họa cho bài: Vì sao nhiều dự án Contact Center thất bại?](assets/blog/vi-sao-nhieu-du-an-contact-center-that-bai/hinh-1.jpg)
 
 Vậy điều gì tạo ra sự khác biệt giữa dự án thành công và thất bại?
 

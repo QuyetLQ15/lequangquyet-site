@@ -9,7 +9,9 @@ chapter: Nền tảng vận hành
 date: 2026-03-17
 published: yes
 kind: post
-linkedin: 
+linkedin: https://www.linkedin.com/pulse/ph%C3%ADa-sau-m%E1%BB%99t-cu%E1%BB%99c-g%E1%BB%8Di-l%C3%A0-c%E1%BA%A3-qu%C3%A2n-%C4%91o%C3%A0n-th%E1%BA%A7m-l%E1%BA%B7ng-quyet-le-ucaec
+cover: assets/blog/mot-contact-center-trong-ngan-hang-van-hanh-nhu-the-nao/cover.jpg
+cover_alt: Một Contact Center trong ngân hàng vận hành như thế nào?
 ---
 
 Nếu bạn đang nhìn vào một Contact Center quy mô từ 200 – 1000 nhân sự tại các Ngân hàng lớn, bạn sẽ thấy đây là một trong những bộ phận đồ sộ và phức tạp nhất. Nhiều người vẫn hình dung nơi đây chỉ có các Agent ngồi nghe điện thoại, nhưng thực tế, đó là một "hệ sinh thái vận hành" với những mắt xích cực kỳ khắt khe:
