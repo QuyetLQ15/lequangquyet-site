@@ -24,16 +24,14 @@ var ac=document.querySelectorAll('.actchips button');
 ac.forEach(function(b){b.addEventListener('click',function(){ac.forEach(function(x){x.setAttribute('aria-pressed',x===b)});var f=b.dataset.f;
 document.querySelectorAll('.actlist .act').forEach(function(a){a.hidden=f!=='all'&&a.dataset.t!==f})})});
 
-var sl=$('slider');
-if(sl){var tr=sl.querySelector('.sl-track'),cs=tr.querySelectorAll('.sl-card'),dt=sl.querySelector('.sl-dots'),hold=false,tm;
-cs.forEach(function(){dt.appendChild(document.createElement('i'))});var ds=dt.children;
-function step(){var c=cs[1]?cs[1].offsetLeft-cs[0].offsetLeft:tr.clientWidth;return c}
-function cur(){return Math.min(cs.length-1,Math.round(tr.scrollLeft/step()))}
-function mark(){var k=cur();for(var i=0;i<ds.length;i++)ds[i].classList.toggle('on',i===k)}
-function go(d){var atEnd=tr.scrollLeft+tr.clientWidth>=tr.scrollWidth-4;if(d>0&&atEnd){tr.scrollTo({left:0,behavior:rm?'auto':'smooth'})}else{tr.scrollBy({left:d*step(),behavior:rm?'auto':'smooth'})}}
-sl.querySelector('.prev').addEventListener('click',function(){go(-1)});sl.querySelector('.next').addEventListener('click',function(){go(1)});
-tr.addEventListener('scroll',function(){clearTimeout(tm);tm=setTimeout(mark,60)},{passive:true});mark();
-['mouseenter','focusin','touchstart'].forEach(function(e){sl.addEventListener(e,function(){hold=true})});
-['mouseleave','focusout','touchend'].forEach(function(e){sl.addEventListener(e,function(){hold=false})});
-if(!rm){setInterval(function(){if(!hold&&!document.hidden)go(1)},5000)}}
+var sp=$('spot');
+if(sp){var ss=sp.querySelectorAll('.spot-slide'),tb=sp.querySelectorAll('.spot-tabs button'),ix=0,tm,DUR=6500;
+sp.style.setProperty('--dur',DUR+'ms');
+function show(n){ix=(n+ss.length)%ss.length;ss.forEach(function(s,i){s.classList.toggle('on',i===ix)});tb.forEach(function(b,i){b.classList.toggle('on',i===ix);b.setAttribute('aria-selected',i===ix)});if(!rm)restart()}
+function restart(){clearTimeout(tm);sp.classList.remove('run');void sp.offsetWidth;if(rm)return;sp.classList.add('run');tm=setTimeout(function(){if(sp.classList.contains('hold')||document.hidden){restart()}else{show(ix+1)}},DUR)}
+tb.forEach(function(b,i){b.addEventListener('click',function(){show(i)})});
+sp.addEventListener('keydown',function(e){if(e.key==='ArrowRight')show(ix+1);if(e.key==='ArrowLeft')show(ix-1)});
+sp.addEventListener('mouseenter',function(){sp.classList.add('hold')});sp.addEventListener('mouseleave',function(){sp.classList.remove('hold')});
+sp.addEventListener('focusin',function(e){try{if(e.target.matches(':focus-visible'))sp.classList.add('hold')}catch(x){}});sp.addEventListener('focusout',function(){sp.classList.remove('hold')});
+restart()}
 })();

@@ -90,18 +90,20 @@ for i,m in enumerate(posts):
 # trang chủ
 S=open(os.path.join(ROOT,'index.html'),encoding='utf-8').read()
 def between(s,a,b,new): i=s.index(a)+len(a); j=s.index(b,i); return s[:i]+new+s[j:]
-STARTS=[(4,'Khi hotline luôn quá tải','Quá tải thường không chỉ là chuyện thiếu người. Điều gì đang thật sự đẩy hàng chờ dài ra?'),(3,'Khi chỉ số đẹp nhưng khách vẫn phàn nàn','Vì sao ép thời gian xử lý ngắn có thể làm khách gọi lại nhiều hơn, và chỉ số nào mới phản ánh vấn đề được giải quyết.'),(7,'Khi QA chỉ nghe được một phần nhỏ cuộc gọi','QA trong ngân hàng làm gì, và vì sao chỉ nghe một phần nhỏ cuộc gọi là chưa đủ.'),(21,'Khi dự án đầu tư lớn nhưng không chạy','Công nghệ tốt nhưng dự án vẫn chậm và không như kỳ vọng. Điểm nghẽn thường nằm ở đâu?')]
+STARTS=[(4,'Khi hotline luôn quá tải','Quá tải thường không chỉ là chuyện thiếu người. Điều gì đang thật sự đẩy hàng chờ dài ra?'),(3,'Khi chỉ số đẹp nhưng khách vẫn phàn nàn','Vì sao ép thời gian xử lý ngắn có thể làm khách gọi lại nhiều hơn, và chỉ số nào mới phản ánh vấn đề được giải quyết.'),(7,'Khi QA chỉ nghe được một phần nhỏ cuộc gọi','QA trong ngân hàng làm gì, và vì sao chỉ nghe một phần nhỏ cuộc gọi là chưa đủ.'),(21,'Khi dự án đầu tư lớn nhưng không chạy','Công nghệ tốt nhưng dự án vẫn chậm và không như kỳ vọng. Điểm nghẽn thường nằm ở đâu?'),(10,'Khi nghe nói AI sẽ thay thế con người','Câu trả lời thẳng là không. AI nên nhận những việc lặp đi lặp lại để con người làm việc cần chất xám.')]
 by={(m['season'],m['number']):m for m in posts}
-# Bắt đầu từ đây: băng chuyền 4 bài theo vấn đề (sửa STARTS ở trên để đổi bài, nhãn, mô tả)
-def slide_card(m,tg,sm):
+# Bắt đầu từ đây: "sân khấu" xoay vòng (sửa STARTS ở trên để đổi bài, nhãn, mô tả; bài nào có cover thì hiện ảnh)
+def spot_slide(m,tg,sm,k,total):
     cov=m.get('cover','')
     if cov: im='<img src="%s" alt="%s" loading="lazy" decoding="async"%s>'%(html.escape(cov),html.escape(m.get('cover_alt') or m['title']),dims(cov))
-    else: im='<span class="ph-n">#%s</span><span class="ph-t">%s</span>'%(m['number'],html.escape(m['chapter']))
-    return ('<article class="sl-card"><a class="sl-img g%d%s" href="%s" tabindex="-1" aria-hidden="true">%s</a>'
-            '<div class="sl-b"><span class="tag">%s</span><h3><a href="%s">%s</a></h3><p>%s</p></div></article>\n')%(
-            m['number']%4,'' if cov else ' noimg',url(m),im,html.escape(tg),url(m),html.escape(m['title']),html.escape(sm))
-sl=''.join(slide_card(by[(1,n)],tg,sm) for n,tg,sm in STARTS if (1,n) in by)
-S=between(S,'<!--START:begin-->','<!--START:end-->','\n<div class="slider" id="slider" role="region" aria-roledescription="carousel" aria-label="Bắt đầu từ đây">\n<div class="sl-track">\n'+sl+'</div>\n<button class="sl-btn prev" type="button" aria-label="Bài trước">&#8249;</button><button class="sl-btn next" type="button" aria-label="Bài sau">&#8250;</button>\n<div class="sl-dots" aria-hidden="true"></div>\n</div>\n<p class="more"><a class="btn p" href="blog/">Xem tất cả bài viết</a></p>\n')
+    else: im='<span class="spot-n">#%s</span><span class="spot-c">%s</span>'%(m['number'],html.escape(m['chapter']))
+    return ('<article class="spot-slide%s" id="spot-%d" role="tabpanel"><a class="spot-art g%d%s" href="%s" tabindex="-1" aria-hidden="true">%s</a>'
+            '<div class="spot-body"><span class="spot-no">%02d / %02d</span><span class="tag">%s</span><h3><a href="%s">%s</a></h3><p>%s</p><a class="btn p" href="%s">Đọc bài này</a></div></article>\n')%(
+            ' on' if k==0 else '',k,m['number']%4,'' if cov else ' noimg',url(m),im,k+1,total,html.escape(tg),url(m),html.escape(m['title']),html.escape(sm),url(m))
+_st=[(by[(1,n)],tg,sm) for n,tg,sm in STARTS if (1,n) in by]
+sl=''.join(spot_slide(m,tg,sm,k,len(_st)) for k,(m,tg,sm) in enumerate(_st))
+tabs=''.join('<button type="button" role="tab" class="%s" aria-controls="spot-%d" aria-selected="%s"><b>%02d</b><span>%s</span></button>'%('on' if k==0 else '',k,'true' if k==0 else 'false',k+1,html.escape(tg)) for k,(m,tg,sm) in enumerate(_st))
+S=between(S,'<!--START:begin-->','<!--START:end-->','\n<div class="spot" id="spot" role="region" aria-roledescription="carousel" aria-label="Bắt đầu từ đây">\n<div class="spot-stage">\n'+sl+'</div>\n<div class="spot-tabs" role="tablist">'+tabs+'</div>\n</div>\n<p class="more"><a class="btn" href="blog/">Xem tất cả bài viết</a></p>\n')
 S=between(S,'<!--HEADER:begin-->','<!--HEADER:end-->',C('header',''))
 S=between(S,'<!--FOOT:begin-->','<!--FOOT:end-->',C('footer',''))
 S=between(S,'<!--FLOAT:begin-->','<!--FLOAT:end-->',C('float',''))
@@ -148,6 +150,11 @@ def card(a,lp,ip):
     cov=a.get('cover','')
     img=('<img src="%s" alt="%s" loading="lazy" decoding="async"%s>'%(html.escape(ip+cov),html.escape(a.get('cover_alt') or a['title']),dims(cov))) if cov else ''
     return '<article class="act" data-t="%s"><a class="ph" href="%s%s/" tabindex="-1" aria-hidden="true"><span>Hình ảnh sắp cập nhật</span>%s</a><div class="bd"><span class="tag">%s</span><h3><a href="%s%s/">%s</a></h3><time>%s</time><p>%s</p></div></article>\n'%(tkey[a['tag']],lp,a['slug'],img,html.escape(a['tag']),lp,a['slug'],html.escape(a['title']),fmt(a.get('date')) or 'Đang cập nhật',html.escape(a.get('summary','')))
+def tile(a,lp,ip):
+    cov=a.get('cover','')
+    img=('<img src="%s" alt="%s" loading="lazy" decoding="async"%s>'%(html.escape(ip+cov),html.escape(a.get('cover_alt') or a['title']),dims(cov))) if cov else ''
+    return ('<a class="tile" data-t="%s" href="%s%s/"><span class="tile-img%s">%s</span><span class="tile-shade"></span><span class="tile-in"><span class="tag">%s</span><strong>%s</strong><span class="tile-meta">%s%s</span><em>%s</em></span></a>\n')%(
+            tkey[a['tag']],lp,a['slug'],'' if cov else ' noimg',img,html.escape(a['tag']),html.escape(a['title']),fmt(a.get('date')) or 'Đang cập nhật',(' · '+html.escape(a['place'])) if a.get('place') and a['place']!='Đang cập nhật' else '',html.escape(a.get('summary','')))
 def apn(x,lab,cls): return '<a class="%s" href="../../%s">%s<strong>%s</strong></a>'%(cls,aurl(x),lab,html.escape(x['title'])) if x else '<span></span>'
 AT=Template(open(os.path.join(ROOT,'tools','activity_template.html'),encoding='utf-8').read())
 for i,a in enumerate(acts):
@@ -174,7 +181,7 @@ if acts:
     os.makedirs(os.path.join(ROOT,'hoat-dong'),exist_ok=True)
     open(os.path.join(ROOT,'hoat-dong','index.html'),'w',encoding='utf-8').write(LT.substitute(desc=adesc,lead='Những chương trình và sự kiện tôi tham gia cùng đồng nghiệp, đối tác và cộng đồng.',chips=chips,cards=''.join(card(a,'','../') for a in acts),header=C('header','../'),footer=C('footer','../'),float=C('float','../')))
 S2=open(os.path.join(ROOT,'index.html'),encoding='utf-8').read()
-S2=between(S2,'<!--ACT:begin-->','<!--ACT:end-->','\n'+(''.join(card(a,'hoat-dong/','') for a in acts[:3]) or '<p>Nội dung đang được cập nhật.</p>\n'))
+S2=between(S2,'<!--ACT:begin-->','<!--ACT:end-->','\n'+(''.join(tile(a,'hoat-dong/','') for a in acts[:3]) or '<p>Nội dung đang được cập nhật.</p>\n'))
 S2=re.sub(r'(data-since="(\d{4})"[^>]*>)\d+',lambda m:m.group(1)+str(datetime.date.today().year-int(m.group(2))),S2)
 open(os.path.join(ROOT,'index.html'),'w',encoding='utf-8').write(S2)
 urls=[(SITE+'/',TODAY),(SITE+'/blog/',TODAY)]+([(SITE+'/hoat-dong/',TODAY)] if acts else [])+[(SITE+'/'+url(m),m['date'] or TODAY) for m in posts]+[(SITE+'/'+aurl(a),a.get('date') or TODAY) for a in acts]
