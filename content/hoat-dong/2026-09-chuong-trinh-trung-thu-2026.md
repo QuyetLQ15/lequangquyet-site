@@ -1,30 +1,28 @@
 ---
-title: Chương trình Trung thu 2026
+title: Trung Thu Mơ Ước 2026 tại Trường Chuyên biệt 1 Tháng 6
 slug: chuong-trinh-trung-thu-2026
-date: 2026-09-25
-place: Đang cập nhật
+date: 2026-09-22
+place: Phường Khánh Hội, TP. Hồ Chí Minh
 tag: Hoạt động
-summary: Nội dung mẫu: tóm tắt một đến hai câu về chương trình Trung thu 2026.
+summary: Cùng Đoàn Phường Khánh Hội và các nhà hảo tâm tổ chức chương trình Trung Thu cho các em nhỏ tại Trường Chuyên biệt 1 Tháng 6.
 cover: assets/hoat-dong/chuong-trinh-trung-thu-2026/cover.jpg
-cover_alt: Chương trình Trung thu 2026
+cover_alt: Các em nhỏ nhận quà Trung Thu cùng đại diện Đoàn Phường Khánh Hội tại Trường Chuyên biệt 1 Tháng 6
 published: yes
 linkedin:
 ---
 
-(Nội dung mẫu: thay bằng nội dung thật của bạn.) Đoạn mở đầu: giới thiệu ngắn chương trình, diễn ra khi nào, ở đâu, có những ai tham gia.
+Trung Thu là Tết của tình thân, và hạnh phúc nhất là khi được trao đi.
 
-## Chương trình diễn ra thế nào
+Ngày 22/9/2026, tôi rất vui được đồng hành cùng Đoàn Phường Khánh Hội và các nhà hảo tâm tổ chức chương trình "Trung Thu Mơ Ước" cho các em nhỏ tại Trường Chuyên biệt 1 Tháng 6.
 
-Mô tả những điểm chính của chương trình trong vài đoạn ngắn. Có thể dùng danh sách:
+## Một phần quà, một nụ cười
 
-- Hoạt động hoặc nội dung thứ nhất
-- Hoạt động hoặc nội dung thứ hai
-- Hoạt động hoặc nội dung thứ ba
+Mỗi phần quà trao đi là một nụ cười nhận lại. Bằng chút sức nhỏ của mình, tôi mong các con luôn có thật nhiều sức khỏe, niềm vui và luôn cảm nhận được sự yêu thương của cộng đồng.
 
-![Mô tả ảnh 1](assets/hoat-dong/chuong-trinh-trung-thu-2026/anh-1.jpg)
+![Trao thư cảm ơn tại chương trình Trung Thu Mơ Ước 2026](assets/hoat-dong/chuong-trinh-trung-thu-2026/anh-1.jpg "Đoàn Phường Khánh Hội trao thư cảm ơn đến các đơn vị đồng hành")
 
-![Mô tả ảnh 2](assets/hoat-dong/chuong-trinh-trung-thu-2026/anh-2.jpg)
+## Thư cảm ơn từ Đoàn Phường Khánh Hội
 
-## Điều đọng lại
+Sau chương trình, Đoàn Phường Khánh Hội gửi thư cảm ơn đến Công ty Cổ phần Minh Phúc Transformation vì đã đồng hành, góp phần mang đến một ngày hội vui tươi và ý nghĩa cho các em thiếu nhi trên địa bàn phường.
 
-Một vài cảm nhận hoặc kết quả đáng nhớ của chương trình.
+![Thư cảm ơn của Đoàn Phường Khánh Hội gửi Minh Phúc Transformation](assets/hoat-dong/chuong-trinh-trung-thu-2026/anh-2.jpg "Thư cảm ơn của Đoàn Phường Khánh Hội")
