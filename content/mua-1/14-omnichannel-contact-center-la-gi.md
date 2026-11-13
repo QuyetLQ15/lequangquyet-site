@@ -12,7 +12,7 @@ kind: post
 linkedin: 
 ---
 
-Tuần trước trước khi nghỉ lễ em Quyết có ngồi trao đổi với một Giám đốc CSKH tại công ty bảo hiểm top 5 Việt Nam.
+Tuần trước, trước khi nghỉ lễ, em có ngồi trao đổi với một Giám đốc CSKH tại công ty bảo hiểm top 5 Việt Nam.
 
 Anh ấy tự tin: "Bên anh đã có Omnichannel rồi. Hotline, email, chat, Zalo — đủ cả."
 
@@ -26,7 +26,7 @@ Anh ấy dừng lại.
 
 Em gật đầu: "Vậy anh đang có Multichannel — không phải Omnichannel."
 
-Đây là sự nhầm lẫn em Quyết đã gặp nhiều, ở hầu hết doanh nghiệp trong ngành BFSI.
+Đây là sự nhầm lẫn em đã gặp nhiều, ở hầu hết doanh nghiệp trong ngành BFSI.
 
 Và nó không phải lỗi của ai — vì ranh giới giữa hai khái niệm này nghe rất giống nhau, nhưng bản chất hoàn toàn khác.
 
@@ -40,7 +40,7 @@ Omnichannel = cho khách hàng nhiều cửa vào.
 
 Và dù họ đi qua cửa nào — câu chuyện của họ vẫn tiếp tục từ chỗ đã dừng.
 
-Hãy để em Quyết dựng lại một kịch bản thực tế:
+Hãy để em dựng lại một kịch bản thực tế:
 
 Khách hàng chat trên website lúc sáng, hỏi về lãi suất gửi tiết kiệm. Chưa xong, họ gọi hotline chiều để hỏi thêm về thủ tục.
 
@@ -96,7 +96,7 @@ Khi dữ liệu thông suốt — doanh nghiệp không chỉ tiết kiệm chi 
 
 Multichannel cho khách hàng nhiều cửa vào. Omnichannel đảm bảo họ không bao giờ phải bắt đầu lại.
 
-Một câu hỏi để tự đánh giá — và em Quyết thực sự muốn nghe câu trả lời của anh chị👇
+Một câu hỏi để tự đánh giá — và em thực sự muốn nghe câu trả lời của anh chị👇
 
 Contact Center của anh chị đang ở đâu trên hành trình này?
 
