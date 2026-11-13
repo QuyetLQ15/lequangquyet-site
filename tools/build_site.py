@@ -92,20 +92,16 @@ S=open(os.path.join(ROOT,'index.html'),encoding='utf-8').read()
 def between(s,a,b,new): i=s.index(a)+len(a); j=s.index(b,i); return s[:i]+new+s[j:]
 STARTS=[(4,'Khi hotline luôn quá tải','Quá tải thường không chỉ là chuyện thiếu người. Điều gì đang thật sự đẩy hàng chờ dài ra?'),(3,'Khi chỉ số đẹp nhưng khách vẫn phàn nàn','Vì sao ép thời gian xử lý ngắn có thể làm khách gọi lại nhiều hơn, và chỉ số nào mới phản ánh vấn đề được giải quyết.'),(7,'Khi QA chỉ nghe được một phần nhỏ cuộc gọi','QA trong ngân hàng làm gì, và vì sao chỉ nghe một phần nhỏ cuộc gọi là chưa đủ.'),(21,'Khi dự án đầu tư lớn nhưng không chạy','Công nghệ tốt nhưng dự án vẫn chậm và không như kỳ vọng. Điểm nghẽn thường nằm ở đâu?')]
 by={(m['season'],m['number']):m for m in posts}
-st=''.join('<li><span class="tag">%s</span><div><h3><a href="%s">%s</a></h3><p>%s</p></div></li>\n'%(tg,url(by[(1,n)]),html.escape(by[(1,n)]['title']),sm) for n,tg,sm in STARTS if (1,n) in by)
-S=between(S,'<!--START:begin-->','<!--START:end-->','\n<ul class="posts">\n'+st+'</ul>\n<p class="more"><a class="btn p" href="blog/">Xem tất cả bài viết</a></p>\n')
-# Băng chuyền bài viết nổi bật (đổi danh sách số bài ở SLIDER để chọn bài và thứ tự)
-SLIDER=[24,21,19,3,10,18]
-def slide_card(m,i):
+# Bắt đầu từ đây: băng chuyền 4 bài theo vấn đề (sửa STARTS ở trên để đổi bài, nhãn, mô tả)
+def slide_card(m,tg,sm):
     cov=m.get('cover','')
     if cov: im='<img src="%s" alt="%s" loading="lazy" decoding="async"%s>'%(html.escape(cov),html.escape(m.get('cover_alt') or m['title']),dims(cov))
     else: im='<span class="ph-n">#%s</span><span class="ph-t">%s</span>'%(m['number'],html.escape(m['chapter']))
     return ('<article class="sl-card"><a class="sl-img g%d%s" href="%s" tabindex="-1" aria-hidden="true">%s</a>'
             '<div class="sl-b"><span class="tag">%s</span><h3><a href="%s">%s</a></h3><p>%s</p></div></article>\n')%(
-            m['number']%4,'' if cov else ' noimg',url(m),im,html.escape(m['chapter']),url(m),html.escape(m['title']),html.escape(desc(m['body'])[:120].rsplit(' ',1)[0]+'…' if len(desc(m['body']))>120 else desc(m['body'])))
-if '<!--SLIDE:begin-->' in S:
-    sl=''.join(slide_card(by[(1,n)],i) for i,n in enumerate(SLIDER) if (1,n) in by)
-    S=between(S,'<!--SLIDE:begin-->','<!--SLIDE:end-->','\n<div class="slider" id="slider" role="region" aria-roledescription="carousel" aria-label="Bài viết nổi bật">\n<div class="sl-track">\n'+sl+'</div>\n<button class="sl-btn prev" type="button" aria-label="Bài trước">&#8249;</button><button class="sl-btn next" type="button" aria-label="Bài sau">&#8250;</button>\n<div class="sl-dots" aria-hidden="true"></div>\n</div>\n')
+            m['number']%4,'' if cov else ' noimg',url(m),im,html.escape(tg),url(m),html.escape(m['title']),html.escape(sm))
+sl=''.join(slide_card(by[(1,n)],tg,sm) for n,tg,sm in STARTS if (1,n) in by)
+S=between(S,'<!--START:begin-->','<!--START:end-->','\n<div class="slider" id="slider" role="region" aria-roledescription="carousel" aria-label="Bắt đầu từ đây">\n<div class="sl-track">\n'+sl+'</div>\n<button class="sl-btn prev" type="button" aria-label="Bài trước">&#8249;</button><button class="sl-btn next" type="button" aria-label="Bài sau">&#8250;</button>\n<div class="sl-dots" aria-hidden="true"></div>\n</div>\n<p class="more"><a class="btn p" href="blog/">Xem tất cả bài viết</a></p>\n')
 S=between(S,'<!--HEADER:begin-->','<!--HEADER:end-->',C('header',''))
 S=between(S,'<!--FOOT:begin-->','<!--FOOT:end-->',C('footer',''))
 S=between(S,'<!--FLOAT:begin-->','<!--FLOAT:end-->',C('float',''))
