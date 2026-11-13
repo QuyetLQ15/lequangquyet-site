@@ -430,3 +430,6 @@ a.ph{text-decoration:none}
 @media(hover:none){.tile em{display:none}}
 @media(max-width:700px){.mosaic,.mosaic:has(.tile:nth-child(2):last-child){grid-template-columns:1fr;grid-template-rows:none}.mosaic .tile:first-child{grid-row:auto}.tile{aspect-ratio:16/10;min-height:0}}
 @media(prefers-reduced-motion:reduce){.tile-img img,.tile em{transition:none}}
+
+/* Chân trang: dòng bản quyền không bị giới hạn 78 ký tự của thẻ p */
+.foot .fine{max-width:none}
