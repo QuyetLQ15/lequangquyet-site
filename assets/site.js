@@ -24,6 +24,13 @@ var ac=document.querySelectorAll('.actchips button');
 ac.forEach(function(b){b.addEventListener('click',function(){ac.forEach(function(x){x.setAttribute('aria-pressed',x===b)});var f=b.dataset.f;
 document.querySelectorAll('.actlist .act').forEach(function(a){a.hidden=f!=='all'&&a.dataset.t!==f})})});
 
+(function(){var d=$('spot-data'),h=$('spot');if(!d||!h)return;var L;try{L=JSON.parse(d.textContent)}catch(e){return}
+if(!L||L.length<5)return;
+for(var i=L.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=L[i];L[i]=L[j];L[j]=t}
+L=L.slice(0,5);
+var E=function(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
+h.querySelector('.spot-stage').innerHTML=L.map(function(p,k){return '<article class="spot-slide'+(k?'':' on')+'" id="spot-'+k+'" role="tabpanel"><a class="spot-art has" href="'+p.u+'" tabindex="-1" aria-hidden="true" style="--bg:url('+p.c+')"><img src="'+p.c+'" alt="'+E(p.a)+'" width="'+p.w+'" height="'+p.h+'"'+(k?' loading="lazy"':'')+' decoding="async"></a><div class="spot-body"><span class="spot-no">0'+(k+1)+' / 05</span><span class="tag">'+E(p.t)+'</span><h3><a href="'+p.u+'">'+E(p.n)+'</a></h3><p>'+E(p.s)+'</p><a class="btn p" href="'+p.u+'">Xem chi tiết</a></div></article>'}).join('');
+h.querySelector('.spot-tabs').innerHTML=L.map(function(p,k){return '<button type="button" role="tab" class="'+(k?'':'on')+'" aria-controls="spot-'+k+'" aria-selected="'+(k?'false':'true')+'"><b>0'+(k+1)+'</b><span>'+E(p.n)+'</span></button>'}).join('')})();
 var sp=$('spot');
 if(sp){var ss=sp.querySelectorAll('.spot-slide'),tb=sp.querySelectorAll('.spot-tabs button'),ix=0,tm,DUR=6500;
 sp.style.setProperty('--dur',DUR+'ms');

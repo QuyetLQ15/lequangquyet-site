@@ -485,3 +485,13 @@ main:focus{outline:none}
 .art-body figure.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .art-body figure.video figcaption{margin-top:10px;padding:0 4px 2px}
 @media(max-width:560px){.art-body figure.video:not(.yt){max-width:300px}}
+
+/* Bắt đầu từ đây: hiện đủ ảnh bìa 16:9, không cắt chữ */
+.spot-slide{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
+.spot-art.has{min-height:300px;align-self:stretch;background:#0b1b2e}
+.spot-art.has::before{content:"";position:absolute;inset:-24px;background:var(--bg) center/cover no-repeat;filter:blur(22px) brightness(.62);transform:scale(1.05)}
+.spot-art.has img{z-index:1;object-fit:contain}
+.spot-body{padding:28px 32px}
+.spot-body h3{font-size:clamp(1.2rem,1.9vw,1.6rem)}
+.spot-body p{font-size:.98rem}
+@media(max-width:900px){.spot-slide{grid-template-columns:1fr}.spot-art.has{min-height:0;aspect-ratio:16/9;align-self:auto}.spot-body{padding:22px 22px 24px}}

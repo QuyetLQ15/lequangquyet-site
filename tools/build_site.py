@@ -102,17 +102,55 @@ def between(s,a,b,new): i=s.index(a)+len(a); j=s.index(b,i); return s[:i]+new+s[
 STARTS=[(4,'Khi hotline luôn quá tải','Quá tải thường không chỉ là chuyện thiếu người. Điều gì đang thật sự đẩy hàng chờ dài ra?'),(3,'Khi chỉ số đẹp nhưng khách vẫn phàn nàn','Vì sao ép thời gian xử lý ngắn có thể làm khách gọi lại nhiều hơn, và chỉ số nào mới phản ánh vấn đề được giải quyết.'),(7,'Khi QA chỉ nghe được một phần nhỏ cuộc gọi','QA trong ngân hàng làm gì, và vì sao chỉ nghe một phần nhỏ cuộc gọi là chưa đủ.'),(21,'Khi dự án đầu tư lớn nhưng không chạy','Công nghệ tốt nhưng dự án vẫn chậm và không như kỳ vọng. Điểm nghẽn thường nằm ở đâu?'),(10,'Khi nghe nói AI sẽ thay thế con người','Câu trả lời thẳng là không. AI nên nhận những việc lặp đi lặp lại để con người làm việc cần chất xám.')]
 by={(m['season'],m['number']):m for m in posts}
 # Bắt đầu từ đây: "sân khấu" xoay vòng (sửa STARTS ở trên để đổi bài, nhãn, mô tả; bài nào có cover thì hiện ảnh)
+# Mô tả ngắn cho khung "Bắt đầu từ đây" (bài mới: ghi summary: trong front matter của bài, mục này chỉ là mô tả dự phòng cho Mùa 1)
+SUM_S1={
+1:'Nhiều người vẫn coi Contact Center là tổng đài nghe gọi. Sự khác biệt cốt lõi nằm ở cách nhìn khách hàng trên mọi kênh.',
+2:'Ở ngân hàng lớn, Contact Center là cả một hệ sinh thái vận hành từ 200 đến 1000 người, không chỉ là những agent ngồi nghe điện thoại.',
+3:'Vì sao ép thời gian xử lý ngắn có thể làm khách gọi lại nhiều hơn, và chỉ số nào mới phản ánh vấn đề được giải quyết.',
+4:'Quá tải thường không chỉ là chuyện thiếu người. Điều gì đang thật sự đẩy hàng chờ dài ra?',
+5:'70 đến 100 cuộc gọi mỗi ngày không chỉ là một con số năng suất. Đằng sau đó là áp lực mà agent phải gánh từng cuộc.',
+6:'Khi áp lực kéo dài, tỷ lệ nghỉ việc có thể lên đến 45% mỗi năm. Vấn đề thường nằm ở quy trình hơn là ở con người.',
+7:'QA trong ngân hàng làm gì, và vì sao chỉ nghe một phần nhỏ cuộc gọi là chưa đủ.',
+8:'Chỉ nghe được 1 đến 3% cuộc gọi, QA thủ công bỏ sót phần lớn dữ liệu. Trợ lý AI giám sát có thể mở rộng việc kiểm tra ra toàn bộ.',
+9:'Chi phí nhân sự chiếm 60 đến 70% chi phí vận hành, lớn hơn nhiều so với hệ thống và phần mềm. Đây là phần chìm của tảng băng.',
+10:'Câu trả lời thẳng là không. AI nên nhận những việc lặp đi lặp lại để con người làm việc cần chất xám.',
+11:'Giữa thời đại số, hotline vẫn là điểm tựa niềm tin và lớp bảo mật mà ứng dụng khó thay thế hoàn toàn.',
+12:'Agent phải mở ba màn hình chỉ để biết đang nói chuyện với ai. CRM tốt biến hồ sơ khách hàng thành một cái nhìn duy nhất.',
+13:'Khách hàng không ghét chờ đợi, họ ghét phải kể lại câu chuyện lần thứ hai. Vì sao dữ liệu không đi theo họ qua các kênh?',
+14:'Có nhiều kênh chưa phải là Omnichannel. Điểm khác nằm ở chỗ ngữ cảnh của khách hàng có đi theo họ qua từng kênh hay không.',
+15:'Điều khiến khách hài lòng sau một cuộc gọi hotline thường không phải là sự giỏi giang, mà là cảm giác được hiểu.',
+16:'Công nghệ tốt vẫn thất bại nếu tự động hóa một quy trình đang hỗn loạn. Hãy sắp xếp quy trình trước khi mua thêm công nghệ.',
+17:'Trong thời đại một chạm, vì sao vẫn có người chờ nhạc chờ để nói chuyện với một con người khi tài khoản biến động bất thường?',
+18:'Nếu QA chỉ nghe khoảng 2% cuộc gọi thì 98% còn lại là vùng tối. Speech Analytics biến lượng dữ liệu đó thành thông tin dùng được.',
+19:'Mỗi cuộc gọi là một viên kim cương thô: tiếng nói thật của khách hàng, chứa thông tin về sản phẩm, rủi ro và cơ hội bán hàng.',
+20:'Contact Center thường bị coi là trung tâm chi phí. Khi biết khai thác dữ liệu và cuộc gọi, nó có thể trở thành nơi tạo doanh thu.',
+21:'Công nghệ tốt và ngân sách lớn vẫn có thể thất bại. Những nguyên nhân lặp đi lặp lại phần lớn nằm ngoài phần mềm.',
+22:'AI không thay thế agent mà giúp họ làm việc tốt hơn. So sánh một ngày làm việc trước và sau khi có AI.',
+23:'Contact Center trong ngành BFSI sẽ ra sao sau 5 đến 10 năm tới, và Agentic AI sẽ thay đổi vai trò của nó thế nào?',
+24:'Sau 24 kỳ bàn về công nghệ, điều tạo ra khác biệt cuối cùng vẫn là con người giúp đỡ con người.',
+25:'Nhìn lại Mùa 1: từ agent, QA, WFM đến CRM, Omnichannel và AI, những mảnh ghép nằm sau một cuộc gọi hotline.',
+}
+def blurb(m): return m.get('summary') or (SUM_S1.get(m['number']) if m['season']==1 else None) or desc(m['body'])
 def spot_slide(m,tg,sm,k,total):
     cov=m.get('cover','')
     if cov: im='<img src="%s" alt="%s" loading="lazy" decoding="async"%s>'%(html.escape(cov),html.escape(m.get('cover_alt') or m['title']),dims(cov))
     else: im='<span class="spot-n">#%s</span><span class="spot-c">%s</span>'%(m['number'],html.escape(m['chapter']))
-    return ('<article class="spot-slide%s" id="spot-%d" role="tabpanel"><a class="spot-art g%d%s" href="%s" tabindex="-1" aria-hidden="true">%s</a>'
+    return ('<article class="spot-slide%s" id="spot-%d" role="tabpanel"><a class="spot-art g%d%s"%s href="%s" tabindex="-1" aria-hidden="true">%s</a>'
             '<div class="spot-body"><span class="spot-no">%02d / %02d</span><span class="tag">%s</span><h3><a href="%s">%s</a></h3><p>%s</p><a class="btn p" href="%s">Xem chi tiết</a></div></article>\n')%(
-            ' on' if k==0 else '',k,m['number']%4,'' if cov else ' noimg',url(m),im,k+1,total,html.escape(tg),url(m),html.escape(m['title']),html.escape(sm),url(m))
+            ' on' if k==0 else '',k,m['number']%4,' has' if cov else ' noimg',(' style="--bg:url(%s)"'%html.escape(cov)) if cov else '',url(m),im,k+1,total,html.escape(tg),url(m),html.escape(m['title']),html.escape(sm),url(m))
 _st=[(by[(1,n)],tg,sm) for n,tg,sm in STARTS if (1,n) in by]
 sl=''.join(spot_slide(m,tg,sm,k,len(_st)) for k,(m,tg,sm) in enumerate(_st))
 tabs=''.join('<button type="button" role="tab" class="%s" aria-controls="spot-%d" aria-selected="%s"><b>%02d</b><span>%s</span></button>'%('on' if k==0 else '',k,'true' if k==0 else 'false',k+1,html.escape(tg)) for k,(m,tg,sm) in enumerate(_st))
-S=between(S,'<!--START:begin-->','<!--START:end-->','\n<div class="spot" id="spot" role="region" aria-roledescription="carousel" aria-label="Bắt đầu từ đây">\n<div class="spot-stage">\n'+sl+'</div>\n<div class="spot-tabs" role="tablist">'+tabs+'</div>\n</div>\n<p class="more"><a class="btn" href="blog/">Xem tất cả bài viết</a></p>\n')
+# danh sách các bài có ảnh bìa để trình duyệt tự chọn ngẫu nhiên 5 bài mỗi lần vào trang
+def _pool():
+    out=[]
+    for m in posts:
+        if not m.get('cover'): continue
+        d=re.search(r'width="(\d+)" height="(\d+)"',dims(m['cover'])); w,h=(d.groups() if d else ('1280','720'))
+        out.append({'u':url(m),'c':m['cover'],'a':m.get('cover_alt') or m['title'],'w':int(w),'h':int(h),'t':m['chapter'],'n':m['title'],'s':blurb(m)})
+    return out
+POOL=json.dumps(_pool(),ensure_ascii=False).replace('</','<\\/')
+S=between(S,'<!--START:begin-->','<!--START:end-->','\n<div class="spot" id="spot" role="region" aria-roledescription="carousel" aria-label="Bắt đầu từ đây">\n<div class="spot-stage">\n'+sl+'</div>\n<div class="spot-tabs" role="tablist">'+tabs+'</div>\n</div>\n<script type="application/json" id="spot-data">'+POOL+'</script>\n<p class="more"><a class="btn" href="blog/">Xem tất cả bài viết</a></p>\n')
 S=between(S,'<!--HEADER:begin-->','<!--HEADER:end-->',C('header',''))
 S=between(S,'<!--FOOT:begin-->','<!--FOOT:end-->',C('footer',''))
 S=between(S,'<!--FLOAT:begin-->','<!--FLOAT:end-->',C('float',''))
