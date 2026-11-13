@@ -28,10 +28,19 @@ def dims(path):
 def src_of(path,prefix): return path if re.match(r'^(https?:)?//|^/',path) else prefix+path
 def figure(alt,path,cap,prefix):
     return '<figure><img src="%s" alt="%s" loading="lazy" decoding="async"%s>%s</figure>'%(html.escape(src_of(path,prefix)),html.escape(alt),dims(path),('<figcaption>%s</figcaption>'%html.escape(cap)) if cap else '')
+def video(path,cap,prefix):
+    c=('<figcaption>%s</figcaption>'%html.escape(cap)) if cap else ''
+    yt=re.match(r'^https?://(?:www\.)?(?:youtube\.com/watch\?v=|youtu\.be/)([\w-]{11})',path)
+    if yt: return '<figure class="video yt"><div class="vbox"><iframe src="https://www.youtube-nocookie.com/embed/%s" title="%s" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>%s</figure>'%(yt.group(1),html.escape(cap or 'Video'),c)
+    poster=re.sub(r'\.\w+$','.jpg',path); has=os.path.exists(os.path.join(ROOT,poster)) and not re.match(r'^(https?:)?//',path)
+    d=dims(poster) if has else ''
+    return '<figure class="video"><video controls playsinline preload="none"%s%s><source src="%s" type="video/mp4">Trình duyệt chưa hỗ trợ phát video.</video>%s</figure>'%((' poster="%s"'%html.escape(src_of(poster,prefix))) if has else '',d,html.escape(src_of(path,prefix)),c)
 def render(body,prefix=''):
     out=[]
     for b in re.split(r'\n\s*\n',body):
         L=b.split('\n')
+        vm=re.match(r'^!\[video\]\((\S+?)(?:\s+"([^"]*)")?\)$',b.strip())
+        if vm: out.append(video(vm.group(1),vm.group(2),prefix)); continue
         im=re.match(r'^!\[([^\]]*)\]\(([^)\s]+)(?:\s+"([^"]*)")?\)$',b.strip())
         if im: out.append(figure(im.group(1),im.group(2),im.group(3),prefix)); continue
         if b.startswith('## '): out.append('<h2>%s</h2>'%inline(b[3:]))
