@@ -500,7 +500,7 @@ main:focus{outline:none}
    LÀM ĐẸP: nền gradient, hình khối mờ, dải đậm, sóng chuyển phần
    ===================================================================== */
 html{overflow-x:hidden}
-.card{z-index:5}
+.card{z-index:8}
 main section{position:relative;isolation:isolate;border-top:0}
 
 /* 1. vầng sáng gradient riêng cho từng phần */
