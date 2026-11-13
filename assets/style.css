@@ -456,3 +456,13 @@ main:focus{outline:none}
 /* Logo Zalo trong nút nổi */
 .hotline.zalo .ic{background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.18)}
 .hotline.zalo .ic img{position:relative;display:block;width:26px;height:auto}
+
+/* Cặp nút nổi: Zalo và gọi điện cùng một kiểu, nằm cạnh nhau */
+.dock{position:fixed;left:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:40;display:flex;align-items:center;gap:10px}
+.dock .hotline{position:static;left:auto;bottom:auto}
+.dock .callfab{position:static;left:auto;bottom:auto;width:54px;height:54px;flex:none;background:linear-gradient(135deg,#087f8c,#25aeb9);color:#fff;border:0;box-shadow:0 12px 26px -10px rgba(8,127,140,.75)}
+@media(max-width:560px){
+  .dock{left:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));gap:8px}
+  .dock .hotline .x{display:none}
+  .dock .callfab{width:48px;height:48px}
+}
