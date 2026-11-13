@@ -186,4 +186,16 @@ S2=re.sub(r'(data-since="(\d{4})"[^>]*>)\d+',lambda m:m.group(1)+str(datetime.da
 open(os.path.join(ROOT,'index.html'),'w',encoding='utf-8').write(S2)
 urls=[(SITE+'/',TODAY),(SITE+'/blog/',TODAY)]+([(SITE+'/hoat-dong/',TODAY)] if acts else [])+[(SITE+'/'+url(m),m['date'] or TODAY) for m in posts]+[(SITE+'/'+aurl(a),a.get('date') or TODAY) for a in acts]
 open(os.path.join(ROOT,'sitemap.xml'),'w',encoding='utf-8').write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join('  <url><loc>%s</loc><lastmod>%s</lastmod></url>\n'%u for u in urls)+'</urlset>\n')
+# cache-busting: gắn số phiên bản vào đường dẫn CSS và JS để trình duyệt luôn tải bản mới sau khi bạn sửa
+import hashlib
+def _ver(f): return hashlib.md5(open(os.path.join(ROOT,'assets',f),'rb').read()).hexdigest()[:8]
+_V={'style.css':_ver('style.css'),'site.js':_ver('site.js')}
+def _bust(path):
+    t=open(path,encoding='utf-8').read()
+    n=re.sub(r'(assets/(style\.css|site\.js))(\?v=[0-9a-f]+)?(?=")',lambda m:m.group(1)+'?v='+_V[m.group(2)],t)
+    if n!=t: open(path,'w',encoding='utf-8').write(n)
+for _d,_,_fs in os.walk(ROOT):
+    if any(x in _d for x in ('.git','.idea','content','tools')): continue
+    for _f in _fs:
+        if _f.endswith('.html'): _bust(os.path.join(_d,_f))
 print('đã tạo %d trang bài viết, %d trang hoạt động'%(len(posts),len(acts)))
