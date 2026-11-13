@@ -98,7 +98,7 @@ def spot_slide(m,tg,sm,k,total):
     if cov: im='<img src="%s" alt="%s" loading="lazy" decoding="async"%s>'%(html.escape(cov),html.escape(m.get('cover_alt') or m['title']),dims(cov))
     else: im='<span class="spot-n">#%s</span><span class="spot-c">%s</span>'%(m['number'],html.escape(m['chapter']))
     return ('<article class="spot-slide%s" id="spot-%d" role="tabpanel"><a class="spot-art g%d%s" href="%s" tabindex="-1" aria-hidden="true">%s</a>'
-            '<div class="spot-body"><span class="spot-no">%02d / %02d</span><span class="tag">%s</span><h3><a href="%s">%s</a></h3><p>%s</p><a class="btn p" href="%s">Đọc bài này</a></div></article>\n')%(
+            '<div class="spot-body"><span class="spot-no">%02d / %02d</span><span class="tag">%s</span><h3><a href="%s">%s</a></h3><p>%s</p><a class="btn p" href="%s">Xem chi tiết</a></div></article>\n')%(
             ' on' if k==0 else '',k,m['number']%4,'' if cov else ' noimg',url(m),im,k+1,total,html.escape(tg),url(m),html.escape(m['title']),html.escape(sm),url(m))
 _st=[(by[(1,n)],tg,sm) for n,tg,sm in STARTS if (1,n) in by]
 sl=''.join(spot_slide(m,tg,sm,k,len(_st)) for k,(m,tg,sm) in enumerate(_st))
@@ -186,6 +186,15 @@ S2=re.sub(r'(data-since="(\d{4})"[^>]*>)\d+',lambda m:m.group(1)+str(datetime.da
 open(os.path.join(ROOT,'index.html'),'w',encoding='utf-8').write(S2)
 urls=[(SITE+'/',TODAY),(SITE+'/blog/',TODAY)]+([(SITE+'/hoat-dong/',TODAY)] if acts else [])+[(SITE+'/'+url(m),m['date'] or TODAY) for m in posts]+[(SITE+'/'+aurl(a),a.get('date') or TODAY) for a in acts]
 open(os.path.join(ROOT,'sitemap.xml'),'w',encoding='utf-8').write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join('  <url><loc>%s</loc><lastmod>%s</lastmod></url>\n'%u for u in urls)+'</urlset>\n')
+# trang 404 (GitHub Pages tự dùng file này khi gõ sai địa chỉ)
+open(os.path.join(ROOT,'404.html'),'w',encoding='utf-8').write('''<!doctype html>
+<html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Không tìm thấy trang | Lê Quang Quyết</title><meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/assets/style.css"></head><body>
+'''+C('header','/')+'''<main class="wrap" style="padding-top:90px;padding-bottom:90px;min-height:55vh"><p class="eyebrow"><span></span> LỖI 404</p><h1>Không tìm thấy trang này</h1>
+<p class="lead">Địa chỉ có thể đã đổi hoặc gõ chưa đúng. Anh/chị có thể quay về trang chủ hoặc xem các bài viết.</p>
+<p><a class="btn p" href="/">Về trang chủ</a> <a class="btn" href="/blog/">Xem Blog</a></p></main>
+'''+C('footer','/')+C('float','/')+'''<script src="/assets/site.js"></script></body></html>''')
 # cache-busting: gắn số phiên bản vào đường dẫn CSS và JS để trình duyệt luôn tải bản mới sau khi bạn sửa
 import hashlib
 def _ver(f): return hashlib.md5(open(os.path.join(ROOT,'assets',f),'rb').read()).hexdigest()[:8]
@@ -195,7 +204,7 @@ def _bust(path):
     n=re.sub(r'(assets/(style\.css|site\.js))(\?v=[0-9a-f]+)?(?=")',lambda m:m.group(1)+'?v='+_V[m.group(2)],t)
     if n!=t: open(path,'w',encoding='utf-8').write(n)
 for _d,_,_fs in os.walk(ROOT):
-    if any(x in _d for x in ('.git','.idea','content','tools')): continue
+    if set(os.path.relpath(_d,ROOT).replace('\\','/').split('/'))&{'.git','.idea','content','tools'}: continue
     for _f in _fs:
         if _f.endswith('.html'): _bust(os.path.join(_d,_f))
 print('đã tạo %d trang bài viết, %d trang hoạt động'%(len(posts),len(acts)))
