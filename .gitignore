@@ -6,3 +6,5 @@ __pycache__/
 content/REVIEW.md
 # File Excel nguồn
 *.xlsx
+# Hướng dẫn riêng cho Claude Code, chỉ giữ trên máy
+CLAUDE.md
