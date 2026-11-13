@@ -495,3 +495,84 @@ main:focus{outline:none}
 .spot-body h3{font-size:clamp(1.2rem,1.9vw,1.6rem)}
 .spot-body p{font-size:.98rem}
 @media(max-width:900px){.spot-slide{grid-template-columns:1fr}.spot-art.has{min-height:0;aspect-ratio:16/9;align-self:auto}.spot-body{padding:22px 22px 24px}}
+
+/* =====================================================================
+   LÀM ĐẸP: nền gradient, hình khối mờ, dải đậm, sóng chuyển phần
+   ===================================================================== */
+html{overflow-x:hidden}
+.card{z-index:5}
+main section{position:relative;isolation:isolate;border-top:0}
+
+/* 1. vầng sáng gradient riêng cho từng phần */
+main section::after{content:"";position:absolute;z-index:-1;pointer-events:none;inset:0 -30vw 0 -30px;
+  background:radial-gradient(520px 380px at 100% 0,rgba(47,182,192,.16),transparent 72%)}
+#gioi-thieu::after{background:radial-gradient(520px 380px at 100% 4%,rgba(47,182,192,.17),transparent 72%),radial-gradient(420px 300px at 0 100%,rgba(47,123,214,.08),transparent 70%)}
+#bat-dau::after{background:radial-gradient(560px 360px at 0 0,rgba(47,123,214,.14),transparent 70%),radial-gradient(520px 340px at 100% 100%,rgba(47,182,192,.18),transparent 72%)}
+#giai-phap::after{background:radial-gradient(520px 380px at 0 0,rgba(47,123,214,.11),transparent 70%),radial-gradient(18px 18px at 50% 50%,rgba(16,33,61,.07) 1.2px,transparent 1.6px) 0 0/22px 22px;
+  -webkit-mask-image:linear-gradient(180deg,#000,transparent 55%);mask-image:linear-gradient(180deg,#000,transparent 55%)}
+#dieu-rut-ra::after{background:radial-gradient(560px 360px at 90% 10%,rgba(47,182,192,.14),transparent 72%),radial-gradient(480px 320px at 0 100%,rgba(47,123,214,.10),transparent 70%)}
+#hoat-dong::after{background:radial-gradient(560px 360px at 100% 0,rgba(47,123,214,.13),transparent 70%),radial-gradient(520px 340px at 0 100%,rgba(47,182,192,.16),transparent 72%)}
+
+/* 4. phần có nền nhạt trải hết bề ngang, mép trên và dưới là sóng mềm */
+main section.tint::before{content:"";width:auto;height:auto;position:absolute;z-index:-2;top:-34px;bottom:-34px;left:-100vmax;right:-100vmax;pointer-events:none;
+  background:
+   url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 34' preserveAspectRatio='none'%3E%3Cpath d='M0 34V16C200-2 400-2 600 16S1000 34 1200 16V34Z' fill='%23f0f7fb'/%3E%3C/svg%3E") repeat-x 0 0/1200px 34px,
+   url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 34' preserveAspectRatio='none'%3E%3Cpath d='M0 0V18C200 36 400 36 600 18S1000 0 1200 18V0Z' fill='%23f0f7fb'/%3E%3C/svg%3E") repeat-x 0 100%/1200px 34px,
+   linear-gradient(#f0f7fb,#f0f7fb) 0 33px/100% calc(100% - 66px) no-repeat}
+
+/* 2. hero: hình khối mờ phía sau tiêu đề */
+.intro .orbs{position:absolute;z-index:-1;pointer-events:none;inset:-40px -22vw -20px -60px}
+.orbs i{position:absolute;display:block;border-radius:50%}
+.orbs .o1{width:420px;height:420px;right:6%;top:-30px;background:radial-gradient(circle at 35% 35%,rgba(47,182,192,.50),rgba(47,182,192,0) 68%);filter:blur(14px);animation:orbA 16s ease-in-out infinite alternate}
+.orbs .o2{width:340px;height:340px;left:18%;top:150px;background:radial-gradient(circle at 60% 40%,rgba(47,123,214,.34),rgba(47,123,214,0) 70%);filter:blur(12px);animation:orbB 19s ease-in-out infinite alternate}
+.orbs .o3{width:200px;height:200px;right:26%;bottom:40px;background:radial-gradient(circle,rgba(120,220,210,.40),rgba(120,220,210,0) 70%);filter:blur(10px);animation:orbA 22s ease-in-out infinite alternate-reverse}
+.orbs .ring{width:300px;height:300px;right:3%;top:20px;border:1.5px solid rgba(14,124,134,.18);box-shadow:inset 0 0 0 28px rgba(255,255,255,.0),0 0 0 36px rgba(14,124,134,.05);animation:orbB 26s ease-in-out infinite alternate}
+.orbs .dots{width:180px;height:120px;right:2%;bottom:70px;background:radial-gradient(circle,rgba(14,124,134,.35) 1.6px,transparent 2px) 0 0/16px 16px;
+  -webkit-mask-image:linear-gradient(135deg,#000,transparent 80%);mask-image:linear-gradient(135deg,#000,transparent 80%)}
+.intro>*:not(.orbs){position:relative}
+@keyframes orbA{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(-26px,22px,0) scale(1.08)}}
+@keyframes orbB{from{transform:translate3d(0,0,0)}to{transform:translate3d(22px,-18px,0)}}
+
+/* 3. dải đậm: câu chốt của trang */
+main section.quote-band{z-index:6;padding:0;margin:44px 0;color:#fff}
+main section.quote-band::before{content:"";width:auto;height:auto;position:absolute;z-index:-2;top:-34px;bottom:-34px;left:-100vmax;right:-100vmax;pointer-events:none;
+  background:
+   url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 34' preserveAspectRatio='none'%3E%3Cpath d='M0 34V16C200-2 400-2 600 16S1000 34 1200 16V34Z' fill='%2311284a'/%3E%3C/svg%3E") repeat-x 0 0/1200px 34px,
+   url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 34' preserveAspectRatio='none'%3E%3Cpath d='M0 0V18C200 36 400 36 600 18S1000 0 1200 18V0Z' fill='%2311284a'/%3E%3C/svg%3E") repeat-x 0 100%/1200px 34px,
+   linear-gradient(#11284a,#11284a) 0 33px/100% calc(100% - 66px) no-repeat}
+.quote-band::after{inset:-34px -100vmax;
+  background:radial-gradient(520px 340px at 78% 30%,rgba(47,182,192,.36),transparent 70%),radial-gradient(460px 320px at 12% 90%,rgba(47,123,214,.32),transparent 70%),radial-gradient(circle,rgba(255,255,255,.10) 1.2px,transparent 1.6px) 0 0/24px 24px;
+  -webkit-mask-image:none;mask-image:none}
+.qb{position:relative;padding:76px 0 80px;max-width:880px}
+.qb::before{content:"\201C";position:absolute;left:-6px;top:6px;font:800 9rem/1 var(--head);color:rgba(47,182,192,.28);pointer-events:none}
+.qb-eyebrow{display:flex;align-items:center;gap:12px;margin:0 0 22px;font:800 .78rem var(--head);letter-spacing:.2em;color:#7fd8de}
+.qb-eyebrow span{width:36px;height:2px;background:linear-gradient(90deg,#2fb6c0,transparent)}
+.qb-quote{margin:0 0 22px;font:800 clamp(1.9rem,4.4vw,3.2rem)/1.25 var(--head);color:#fff;max-width:none;letter-spacing:-.01em}
+.qb-quote em{font-style:normal;background:linear-gradient(100deg,#7fe3e8,#35c0c8 45%,#6aa8ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.qb-sub{margin:0;color:#b8c9df;font-size:1.05rem;max-width:52ch}
+
+/* 5. chi tiết làm đẹp */
+main h2:after{background:linear-gradient(90deg,#2fb6c0,#2f7bd6);width:60px}
+.card{box-shadow:0 34px 60px -34px rgba(8,127,140,.6),0 0 0 1px rgba(47,182,192,.28)}
+.card::before{content:"";position:absolute;inset:-1px;border-radius:21px;padding:1.5px;pointer-events:none;
+  background:linear-gradient(160deg,rgba(127,227,232,.95),rgba(127,227,232,0) 38%,rgba(106,168,255,.7) 100%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
+.col,.col:first-child{background:rgba(255,255,255,.78);backdrop-filter:blur(6px);border-radius:16px;padding:18px 20px 14px!important;border:1px solid #dbe8f1}
+.col:hover{border-color:#8ed6da;box-shadow:0 18px 34px -22px rgba(14,124,134,.5)}
+.issues{counter-reset:iss;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;border:0}
+.issues li{counter-increment:iss;display:block;position:relative;overflow:hidden;background:rgba(255,255,255,.86);border:1px solid #dbe8f1;border-radius:18px;padding:24px 24px 22px 24px;box-shadow:0 14px 30px -26px rgba(16,33,61,.55);transition:transform .25s,box-shadow .25s,border-color .25s}
+.issues li::before{content:counter(iss,decimal-leading-zero);position:absolute;right:16px;top:6px;font:800 3.4rem/1 var(--head);background:linear-gradient(160deg,rgba(47,182,192,.34),rgba(47,123,214,.10));-webkit-background-clip:text;background-clip:text;color:transparent}
+.issues li::after{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,#2fb6c0,#2f7bd6)}
+.issues li:hover{transform:translateY(-3px);border-color:#8ed6da;box-shadow:0 22px 38px -24px rgba(14,124,134,.55)}
+.issues h3{padding-right:52px;margin-bottom:6px}
+.stat b{background:linear-gradient(120deg,var(--ink),#0e7c86);-webkit-background-clip:text;background-clip:text;color:transparent}
+@media(max-width:900px){.issues{grid-template-columns:1fr}.qb{padding:58px 0 62px}.qb::before{font-size:6.5rem}.intro .orbs{inset:-30px -14px 0 -14px}.orbs .o1{width:300px;height:300px}.orbs .ring,.orbs .dots{display:none}}
+@media(prefers-reduced-motion:reduce){.orbs i{animation:none!important}.issues li{transition:none}}
+
+@media(max-width:900px){
+  main section::after{right:-22px;left:-22px}
+  main section.tint::before,main section.quote-band::before{left:-22px;right:-22px}
+  .quote-band::after{inset:-34px -22px}
+  .intro .orbs{right:-22px;left:-22px;overflow:hidden}
+  .orbs .o2{width:240px;height:240px;left:4%}
+}
