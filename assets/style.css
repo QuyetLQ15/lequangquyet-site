@@ -607,3 +607,38 @@ body{overflow-x:clip;max-width:100vw;position:relative}
 @keyframes avSpin{to{--ang:360deg}}
 @media(prefers-reduced-motion:reduce){.avatar{animation:none}}
 @media(max-width:900px){.card{background-size:100% 34px,190px 190px,18px 18px,auto,auto,auto,auto}}
+
+/* GIẢI PHÁP: hành trình cuộc gọi */
+.flow-note{margin:6px 0 0;color:#4b5d72;font-size:.95rem}
+.flow{list-style:none;margin:22px 0 0;padding:0 0 0 46px;position:relative;display:grid;gap:18px}
+.flow::before{content:"";position:absolute;left:15px;top:30px;bottom:30px;width:2px;background:linear-gradient(180deg,#2fb6c0,#2f7bd6,#6a7cf0);opacity:.55;border-radius:2px}
+.sol{position:relative;display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.5fr);background:rgba(255,255,255,.92);border:1px solid #dbe8f1;border-radius:18px;transition:transform .25s,box-shadow .25s,border-color .25s;--c1:#1f6fd0;--c2:#2fb6c0}
+.sol::before{content:attr(data-n);position:absolute;left:-46px;top:20px;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font:800 .8rem/1 var(--head);color:#fff;background:linear-gradient(135deg,var(--c1),var(--c2));box-shadow:0 0 0 5px #fff,0 6px 16px -4px var(--c1);z-index:2}
+.sol:hover{transform:translateY(-3px);border-color:#8ed6da;box-shadow:0 22px 38px -24px rgba(14,124,134,.55)}
+.s-wx{--c1:#1f6fd0;--c2:#2fb6c0}.s-bot{--c1:#1f4fd6;--c2:#35c0c8}.s-cx{--c1:#2fb6c0;--c2:#6aa8ff}.s-qc{--c1:#13296b;--c2:#5b6cf0}
+.sol-m{position:relative;overflow:hidden;border-radius:17px 0 0 17px;min-height:210px;background:linear-gradient(135deg,var(--c1),var(--c2))}
+.sol-m img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;transition:transform .6s}
+.sol:hover .sol-m img{transform:scale(1.05)}
+.sol-m::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(10,22,50,.55),transparent 42%)}
+.sol-st{position:absolute;left:12px;bottom:11px;z-index:2;color:#fff;font:700 .72rem/1 var(--head);letter-spacing:.12em;text-transform:uppercase;padding:6px 10px;border-radius:999px;background:rgba(10,22,50,.55);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.28)}
+.sol-b{padding:16px 20px 16px;display:flex;flex-direction:column;min-width:0}
+.sol-tag{align-self:flex-start;font:700 .7rem/1 var(--head);letter-spacing:.08em;text-transform:uppercase;color:var(--c1);background:color-mix(in srgb,var(--c1) 9%,#fff);border:1px solid color-mix(in srgb,var(--c1) 22%,#fff);padding:5px 9px;border-radius:999px;margin-bottom:8px}
+.sol-b h3{font-size:1.32rem;margin:0 0 2px}
+.sol-b h3 a{color:var(--ink);text-decoration:none}
+.sol-b .k{font-weight:700;color:var(--c1);margin:0 0 6px}
+.sol-b p{margin:0 0 10px;font-size:.95rem;line-height:1.55}
+.sol-s{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:2px 0 12px}
+.sol-s div{background:linear-gradient(180deg,#f4f9fc,#eaf4fa);border:1px solid #dbe8f1;border-radius:12px;padding:8px 6px;text-align:center}
+.sol-s b{display:block;font:800 1.08rem/1.1 var(--head);background:linear-gradient(100deg,var(--c1),var(--c2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sol-s span{display:block;font-size:.72rem;line-height:1.25;color:#5b6b7e;margin-top:3px}
+.sol-go{margin-top:auto;font-weight:700;font-size:.9rem;color:var(--c1);text-decoration:none}
+.sol-go:hover{text-decoration:underline}
+.flow-src{margin:12px 0 0;font-size:.8rem;color:#7a8896}
+@media(max-width:900px){
+  .flow{padding-left:34px}.flow::before{left:10px}
+  .sol{grid-template-columns:1fr}
+  .sol::before{left:-34px;top:14px;width:26px;height:26px;font-size:.7rem}
+  .sol-m{min-height:0;aspect-ratio:16/8;border-radius:17px 17px 0 0}
+  .sol-s b{font-size:.98rem}
+}
+@media(prefers-reduced-motion:reduce){.sol,.sol-m img{transition:none}}
