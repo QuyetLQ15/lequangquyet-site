@@ -650,3 +650,10 @@ body{overflow-x:clip;max-width:100vw;position:relative}
   .s-cx .sol-m{aspect-ratio:1/.95}.s-cx .sol-m img{object-position:center 40%}
   .s-qc .sol-m{aspect-ratio:5/4}.s-qc .sol-m img{object-position:left top}
 }
+/* Webex: banner ngang ở đầu thẻ */
+.s-wx{grid-template-columns:1fr}
+.s-wx .sol-m{min-height:0;aspect-ratio:1200/424;border-radius:17px 17px 0 0}
+.s-wx .sol-m img{object-position:center}
+.s-wx .sol-m::after{display:none}
+.s-wx .sol-st{top:12px;bottom:auto}
+@media(max-width:900px){.s-wx .sol-m{aspect-ratio:1200/424}.s-wx .sol-st{top:auto;bottom:10px;left:10px}}
