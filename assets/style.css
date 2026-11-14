@@ -576,3 +576,8 @@ main h2:after{background:linear-gradient(90deg,#2fb6c0,#2f7bd6);width:60px}
   .intro .orbs{right:-22px;left:-22px;overflow:hidden}
   .orbs .o2{width:240px;height:240px;left:4%}
 }
+
+/* chống tràn ngang trên tablet/điện thoại (không cho trình duyệt phóng to layout) + chỉ dùng giao diện sáng */
+:root{color-scheme:light only}
+html{overflow-x:hidden;max-width:100%}
+body{overflow-x:clip;max-width:100vw;position:relative}
