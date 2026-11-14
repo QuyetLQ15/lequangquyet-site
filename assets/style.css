@@ -644,3 +644,9 @@ body{overflow-x:clip;max-width:100vw;position:relative}
 @media(prefers-reduced-motion:reduce){.sol,.sol-m img{transition:none}}
 .s-wx .sol-m img{object-position:center 62%}
 .s-wx .sol-m::after{background:linear-gradient(0deg,rgba(10,40,90,.35),transparent 30%)}
+/* điện thoại: khung ảnh theo đúng tỉ lệ từng ảnh để không cắt robot/biểu tượng */
+@media(max-width:900px){
+  .s-bot .sol-m{aspect-ratio:1/1}.s-bot .sol-m img{object-position:center 18%}
+  .s-cx .sol-m{aspect-ratio:1/.95}.s-cx .sol-m img{object-position:center 40%}
+  .s-qc .sol-m{aspect-ratio:5/4}.s-qc .sol-m img{object-position:left top}
+}
