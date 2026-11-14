@@ -642,3 +642,5 @@ body{overflow-x:clip;max-width:100vw;position:relative}
   .sol-s b{font-size:.98rem}
 }
 @media(prefers-reduced-motion:reduce){.sol,.sol-m img{transition:none}}
+.s-wx .sol-m img{object-position:center 62%}
+.s-wx .sol-m::after{background:linear-gradient(0deg,rgba(10,40,90,.35),transparent 30%)}
