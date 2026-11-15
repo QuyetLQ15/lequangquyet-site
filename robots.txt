@@ -3,4 +3,13 @@ Allow: /
 Disallow: /content/
 Disallow: /tools/
 
+User-agent: facebookexternalhit
+User-agent: Facebot
+User-agent: meta-externalagent
+User-agent: Twitterbot
+User-agent: LinkedInBot
+Allow: /
+Disallow: /content/
+Disallow: /tools/
+
 Sitemap: https://lequangquyet.com/sitemap.xml
