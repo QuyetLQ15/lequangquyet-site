@@ -235,6 +235,25 @@ S2=re.sub(r'(data-since="(\d{4})"[^>]*>)\d+',lambda m:m.group(1)+str(datetime.da
 open(os.path.join(ROOT,'index.html'),'w',encoding='utf-8').write(S2)
 urls=[(SITE+'/',TODAY),(SITE+'/blog/',TODAY)]+([(SITE+'/hoat-dong/',TODAY)] if acts else [])+[(SITE+'/'+url(m),m['date'] or TODAY) for m in posts]+[(SITE+'/'+aurl(a),a.get('date') or TODAY) for a in acts]
 open(os.path.join(ROOT,'sitemap.xml'),'w',encoding='utf-8').write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join('  <url><loc>%s</loc><lastmod>%s</lastmod></url>\n'%u for u in urls)+'</urlset>\n')
+# ngày cập nhật (dateModified) cho trang chủ trong dữ liệu JSON-LD, tự đặt theo ngày build
+_h=open(os.path.join(ROOT,'index.html'),encoding='utf-8').read()
+_m=re.search(r'(<script type="application/ld\+json">)(.*?)(</script>)',_h,re.S)
+if _m:
+    try:
+        _d=json.loads(_m.group(2))
+        for _n in _d.get('@graph',[]):
+            if _n.get('@type')=='ProfilePage': _n['dateModified']=TODAY
+        _h=_h[:_m.start(2)]+'\n'+json.dumps(_d,ensure_ascii=False,indent=1)+'\n'+_h[_m.end(2):]
+        open(os.path.join(ROOT,'index.html'),'w',encoding='utf-8').write(_h)
+    except ValueError: pass
+# llms.txt: bản tóm tắt site cho công cụ AI, tự tạo từ danh sách bài viết
+_L=['# Lê Quang Quyết','','> Banking Solutions Sales Manager tại Minh Phúc Transformation (MPT). Chia sẻ giải pháp chăm sóc khách hàng đa kênh cho nhóm BFSI (ngân hàng, bảo hiểm, tài chính).','',
+'Trang cá nhân của Lê Quang Quyết (Quyet Le). Nội dung bằng tiếng Việt, quan điểm trình bày là của cá nhân tác giả.','','## Trang chính','',
+'- [Trang chủ](%s/): giới thiệu, giải pháp và hoạt động'%SITE,'- [Blog](%s/blog/): chuỗi bài Contact Center Insights'%SITE]
+if acts: _L.append('- [Hoạt động](%s/hoat-dong/): chương trình và sự kiện'%SITE)
+_L+=['','## Bài viết','']+['- [%s](%s/%s)'%(m['title'],SITE,url(m)) for m in posts]
+_L+=['','## Liên hệ','','- Email: quyetlq@mpt.com.vn','- LinkedIn: https://www.linkedin.com/in/quyetlq','']
+open(os.path.join(ROOT,'llms.txt'),'w',encoding='utf-8').write('\n'.join(_L))
 # trang 404 (GitHub Pages tự dùng file này khi gõ sai địa chỉ)
 open(os.path.join(ROOT,'404.html'),'w',encoding='utf-8').write('''<!doctype html>
 <html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">

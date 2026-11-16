@@ -1,0 +1,44 @@
+# Lê Quang Quyết
+
+> Banking Solutions Sales Manager tại Minh Phúc Transformation (MPT). Chia sẻ giải pháp chăm sóc khách hàng đa kênh cho nhóm BFSI (ngân hàng, bảo hiểm, tài chính).
+
+Trang cá nhân của Lê Quang Quyết (Quyet Le). Nội dung bằng tiếng Việt, quan điểm trình bày là của cá nhân tác giả.
+
+## Trang chính
+
+- [Trang chủ](https://lequangquyet.com/): giới thiệu, giải pháp và hoạt động
+- [Blog](https://lequangquyet.com/blog/): chuỗi bài Contact Center Insights
+- [Hoạt động](https://lequangquyet.com/hoat-dong/): chương trình và sự kiện
+
+## Bài viết
+
+- [Contact Center khác Call Center như thế nào?](https://lequangquyet.com/blog/contact-center-khac-call-center-nhu-the-nao/)
+- [Một Contact Center trong ngân hàng vận hành như thế nào?](https://lequangquyet.com/blog/mot-contact-center-trong-ngan-hang-van-hanh-nhu-the-nao/)
+- [Nhiều Contact Center đang đo sai KPI?](https://lequangquyet.com/blog/nhieu-contact-center-dang-do-sai-kpi/)
+- [Vì sao nhiều Contact Center luôn quá tải?](https://lequangquyet.com/blog/vi-sao-nhieu-contact-center-luon-qua-tai/)
+- [Một agent Contact Center xử lý bao nhiêu cuộc gọi mỗi ngày?](https://lequangquyet.com/blog/mot-agent-contact-center-xu-ly-bao-nhieu-cuoc-goi-moi-ngay/)
+- [Burnout trong Contact Center](https://lequangquyet.com/blog/burnout-trong-contact-center/)
+- [QA trong Contact Center hoạt động thế nào?](https://lequangquyet.com/blog/qa-trong-contact-center-hoat-dong-the-nao/)
+- [Vấn đề lớn nhất của QA thủ công](https://lequangquyet.com/blog/van-de-lon-nhat-cua-qa-thu-cong/)
+- [Một Contact Center tốn bao nhiêu chi phí?](https://lequangquyet.com/blog/mot-contact-center-ton-bao-nhieu-chi-phi/)
+- [Voicebot có thể thay thế agent không?](https://lequangquyet.com/blog/voicebot-co-the-thay-the-agent-khong/)
+- [Vì sao nhiều ngân hàng vẫn muốn khách hàng gọi hotline?](https://lequangquyet.com/blog/vi-sao-nhieu-ngan-hang-van-muon-khach-hang-goi-hotline/)
+- [CRM quan trọng thế nào với Contact Center?](https://lequangquyet.com/blog/crm-quan-trong-the-nao-voi-contact-center/)
+- [Vì sao khách hàng ghét phải lặp lại thông tin?](https://lequangquyet.com/blog/vi-sao-khach-hang-ghet-phai-lap-lai-thong-tin/)
+- [Omnichannel Contact Center là gì?](https://lequangquyet.com/blog/omnichannel-contact-center-la-gi/)
+- [Điều gì khiến khách hàng hài lòng nhất khi gọi hotline?](https://lequangquyet.com/blog/dieu-gi-khien-khach-hang-hai-long-nhat-khi-goi-hotline/)
+- [Một lỗi rất phổ biến khi triển khai Contact Center](https://lequangquyet.com/blog/mot-loi-rat-pho-bien-khi-trien-khai-contact-center/)
+- [Tại sao nhiều khách hàng vẫn thích gọi điện?](https://lequangquyet.com/blog/tai-sao-nhieu-khach-hang-van-thich-goi-dien/)
+- [Speech Analytics đang thay đổi Contact Center](https://lequangquyet.com/blog/speech-analytics-dang-thay-doi-contact-center/)
+- [Contact Center là “mỏ vàng dữ liệu”](https://lequangquyet.com/blog/contact-center-la-mo-vang-du-lieu/)
+- [Contact Center có thể giúp tăng doanh thu](https://lequangquyet.com/blog/contact-center-co-the-giup-tang-doanh-thu/)
+- [Vì sao nhiều dự án Contact Center thất bại?](https://lequangquyet.com/blog/vi-sao-nhieu-du-an-contact-center-that-bai/)
+- [AI sẽ thay đổi Contact Center như thế nào?](https://lequangquyet.com/blog/ai-se-thay-doi-contact-center-nhu-the-nao/)
+- [Tương lai của Contact Center](https://lequangquyet.com/blog/tuong-lai-cua-contact-center/)
+- [Bài học lớn nhất từ Contact Center](https://lequangquyet.com/blog/bai-hoc-lon-nhat-tu-contact-center/)
+- [Phía sau một cuộc gọi hotline: nhìn lại Mùa 1](https://lequangquyet.com/blog/phia-sau-mot-cuoc-goi-hotline-nhin-lai-mua-1/)
+
+## Liên hệ
+
+- Email: quyetlq@mpt.com.vn
+- LinkedIn: https://www.linkedin.com/in/quyetlq
