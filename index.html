@@ -155,7 +155,7 @@
  ]
 }
 </script>
-<link rel="stylesheet" href="assets/style.css?v=73d030ce">
+<link rel="stylesheet" href="assets/style.css?v=000c0b24">
 </head>
 <body id="top">
 <!--HEADER:begin--><a class="skip" href="#main">Chuyển đến nội dung chính</a>
@@ -298,6 +298,22 @@
 <h2 id="h-cta">Cùng trao đổi về Contact Center của anh/chị</h2>
 <p>Tôi sẵn lòng lắng nghe hiện trạng và chia sẻ góc nhìn từ những gì tôi đã triển khai.</p>
 <div class="cta-btns"><a class="btn p" href="https://zalo.me/0587793865" target="_blank" rel="noopener">Nhắn Zalo</a><a class="btn s" href="tel:+84587793865">Gọi 0587 793 865</a><a class="btn s" href="mailto:quyetlq@mpt.com.vn">Gửi email</a></div>
+<form class="lead" id="lien-he-form" novalidate aria-labelledby="h-lead">
+<h3 id="h-lead">Hoặc để lại thông tin, tôi sẽ chủ động liên hệ</h3>
+<div class="lead-g">
+<label>Họ tên *<input name="name" maxlength="80" required autocomplete="name"></label>
+<label>Số điện thoại *<input name="phone" type="tel" maxlength="20" required autocomplete="tel"></label>
+<label>Email<input name="email" type="email" maxlength="120" autocomplete="email"></label>
+<label>Công ty / Ngân hàng<input name="company" maxlength="100" autocomplete="organization"></label>
+<label class="w">Anh/chị quan tâm giải pháp nào?<select name="interest"><option value="">Chưa xác định</option><option>Webex Contact Center</option><option>OmiBot</option><option>OmiCX</option><option>OmiQC</option><option>SIP Trunking/VBN</option><option>Dịch vụ BPO</option><option>Khác</option></select></label>
+<label class="w">Nội dung cần trao đổi<textarea name="message" maxlength="1000"></textarea></label>
+</div>
+<div class="hp" aria-hidden="true"><label>Website<input name="website" tabindex="-1" autocomplete="off"></label></div>
+<label class="ck"><input type="checkbox" name="consent"> <span>Tôi đồng ý để Lê Quang Quyết lưu và sử dụng thông tin này cho mục đích liên hệ, tư vấn. Thông tin không được công khai hay chia sẻ cho bên thứ ba.</span></label>
+<div class="lead-ts"></div>
+<button type="submit" class="btn p" disabled>Gửi yêu cầu</button>
+<p class="lead-msg" role="status"></p>
+</form>
 </div></section>
 <!--FOOT:begin--><footer class="foot"><div class="wrap fgrid">
 <div><p class="fb">Lê Quang Quyết</p><p>Banking Solutions Sales Manager tại Minh Phúc Transformation (MPT). Giải mã những gì diễn ra phía sau mỗi cuộc gọi hotline ngân hàng.</p></div>
@@ -331,6 +347,7 @@ function f(t){t0=t0||t;var p=Math.min((t-t0)/900,1);b.textContent=Math.round(n*p
 document.querySelectorAll('.logo img,.ph img').forEach(function(i){function f(){if(i.parentNode.classList.contains('logo')){var t=document.createElement('span');t.className='wm';t.textContent=i.alt;i.replaceWith(t)}else{i.remove()}}i.addEventListener('error',f);if(i.complete&&!i.naturalWidth)f()});
 </script>
 <script src="assets/site.js?v=01d5869a"></script>
+<script src="assets/lead.js?v=e0d9d3c0" defer></script>
 <!-- Cloudflare Web Analytics: thay YOUR_TOKEN bằng token lấy trong Cloudflare, rồi bỏ dấu chú thích
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "YOUR_TOKEN"}'></script>
 -->

@@ -42,14 +42,9 @@ async function notify(env, c) {
     await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: { Authorization: 'Bearer ' + env.RESEND_API_KEY, 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        from: 'Binh luan lequangquyet.com <onboarding@resend.dev>',
-        to: [to],
-        subject: 'Bình luận mới chờ duyệt: ' + c.name,
-        text: `Bài: ${c.slug}\nTên: ${c.name}\nEmail: ${c.email || '(không để lại)'}\n\n${c.body}\n\nDuyệt tại: ${c.admin}`
-      })
+      body: JSON.stringify({ from: 'lequangquyet.com <onboarding@resend.dev>', to: [to], subject: c.subject, text: c.text })
     });
-  } catch (e) { /* thông báo lỗi không được làm hỏng việc gửi bình luận */ }
+  } catch (e) { /* thông báo lỗi không được làm hỏng việc gửi */ }
 }
 
 async function postComment(req, env) {
@@ -78,7 +73,44 @@ async function postComment(req, env) {
 
   await env.DB.prepare('INSERT INTO comments(slug,name,email,body,status,ip_hash) VALUES(?,?,?,?,?,?)')
     .bind(slug, name, email || null, body, 'pending', ipHash).run();
-  await notify(env, { slug, name, email, body, admin: new URL(req.url).origin + '/admin' });
+  await notify(env, { subject: 'Bình luận mới chờ duyệt: ' + name, text: `Bài: ${slug}\nTên: ${name}\nEmail: ${email || '(không để lại)'}\n\n${body}\n\nDuyệt tại: ${new URL(req.url).origin}/admin` });
+  return json(req, { ok: true });
+}
+
+
+const INTERESTS = ['Webex Contact Center', 'OmiBot', 'OmiCX', 'OmiQC', 'SIP Trunking/VBN', 'Dịch vụ BPO', 'Khác'];
+async function postContact(req, env) {
+  let d;
+  try { d = await req.json(); } catch { return json(req, { error: 'Dữ liệu không hợp lệ.' }, 400); }
+  if (d.website) return json(req, { ok: true });
+  const name = String(d.name || '').trim(), phone = String(d.phone || '').trim(), email = String(d.email || '').trim();
+  const company = String(d.company || '').trim(), interest = String(d.interest || '').trim(), message = String(d.message || '').trim();
+  if (name.length < 1 || name.length > 80) return json(req, { error: 'Vui lòng nhập họ tên.' }, 400);
+  if (!/^[0-9+\s.()-]{8,20}$/.test(phone)) return json(req, { error: 'Vui lòng nhập số điện thoại hợp lệ để tôi liên hệ.' }, 400);
+  if (email && (email.length > 120 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))) return json(req, { error: 'Email chưa đúng định dạng.' }, 400);
+  if (company.length > 100) return json(req, { error: 'Tên công ty quá dài.' }, 400);
+  if (interest && !INTERESTS.includes(interest)) return json(req, { error: 'Lựa chọn giải pháp không hợp lệ.' }, 400);
+  if (message.length > 1000) return json(req, { error: 'Nội dung tối đa 1000 ký tự.' }, 400);
+  if (!d.consent) return json(req, { error: 'Vui lòng đồng ý để tôi lưu thông tin dùng cho việc liên hệ.' }, 400);
+
+  const ip = req.headers.get('CF-Connecting-IP') || '';
+  const form = new FormData();
+  form.append('secret', env.TURNSTILE_SECRET || '');
+  form.append('response', String(d.token || ''));
+  form.append('remoteip', ip);
+  const v = await (await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', { method: 'POST', body: form })).json();
+  if (!v.success) return json(req, { error: 'Chưa xác minh được bạn là người thật. Vui lòng thử lại.' }, 400);
+
+  const ipHash = await sha256(ip + '|lqq-salt');
+  const recent = await env.DB.prepare("SELECT COUNT(*) n FROM leads WHERE ip_hash=? AND created_at > datetime('now','-10 minutes')").bind(ipHash).first();
+  if (recent.n >= 3) return json(req, { error: 'Bạn gửi hơi nhanh, vui lòng thử lại sau ít phút.' }, 429);
+
+  await env.DB.prepare('INSERT INTO leads(name,phone,email,company,interest,message,ip_hash) VALUES(?,?,?,?,?,?,?)')
+    .bind(name, phone, email || null, company || null, interest || null, message || null, ipHash).run();
+  await notify(env, {
+    subject: 'Yêu cầu tư vấn mới: ' + name,
+    text: `Tên: ${name}\nĐiện thoại: ${phone || '-'}\nEmail: ${email || '-'}\nCông ty: ${company || '-'}\nQuan tâm: ${interest || '-'}\n\n${message || '(không có nội dung)'}\n\nXem tại: ${new URL(req.url).origin}/admin`
+  });
   return json(req, { ok: true });
 }
 
@@ -96,6 +128,20 @@ async function admin(req, env, path) {
     const q = st === 'all' ? 'SELECT * FROM comments ORDER BY id DESC LIMIT 300' : 'SELECT * FROM comments WHERE status=? ORDER BY id DESC LIMIT 300';
     const r = st === 'all' ? await env.DB.prepare(q).all() : await env.DB.prepare(q).bind(st).all();
     return json(req, { comments: r.results, notify_email: await getSetting(env, 'notify_email') });
+  }
+  if (path === '/api/admin/leads') {
+    const r = await env.DB.prepare('SELECT * FROM leads ORDER BY id DESC LIMIT 300').all();
+    return json(req, { leads: r.results });
+  }
+  if (path === '/api/admin/lead-action' && req.method === 'POST') {
+    const d = await req.json();
+    const id = parseInt(d.id, 10);
+    if (!id) return json(req, { error: 'Thiếu id.' }, 400);
+    if (d.action === 'done') await env.DB.prepare("UPDATE leads SET status='done' WHERE id=?").bind(id).run();
+    else if (d.action === 'new') await env.DB.prepare("UPDATE leads SET status='new' WHERE id=?").bind(id).run();
+    else if (d.action === 'delete') await env.DB.prepare('DELETE FROM leads WHERE id=?').bind(id).run();
+    else return json(req, { error: 'Hành động không hợp lệ.' }, 400);
+    return json(req, { ok: true });
   }
   if (path === '/api/admin/action' && req.method === 'POST') {
     const d = await req.json();
@@ -130,11 +176,17 @@ let T=sessionStorage.getItem('t')||'',S='pending';
 const $=s=>document.querySelector(s);
 async function api(p,o={}){const r=await fetch(p,{...o,headers:{'Content-Type':'application/json',Authorization:'Bearer '+T}});const j=await r.json();if(!r.ok)throw new Error(j.error||'Lỗi');return j}
 function el(t,c,x){const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
-async function load(){try{const j=await api('/api/admin/list?status='+S);$('#login').hidden=true;$('#app').hidden=false;$('#ne').value=j.notify_email||'';
-const tb=$('#tabs');tb.textContent='';[['pending','Chờ duyệt'],['approved','Đã duyệt'],['rejected','Từ chối'],['all','Tất cả']].forEach(([k,v])=>{const b=el('button',k===S?'on':'',v);b.onclick=()=>{S=k;load()};tb.append(b)});
+async function load(){try{if(S==='leads')return loadLeads();const j=await api('/api/admin/list?status='+S);$('#login').hidden=true;$('#app').hidden=false;$('#ne').value=j.notify_email||'';
+const tb=$('#tabs');tb.textContent='';[['pending','Chờ duyệt'],['approved','Đã duyệt'],['rejected','Từ chối'],['all','Tất cả'],['leads','Yêu cầu tư vấn']].forEach(([k,v])=>{const b=el('button',k===S?'on':'',v);b.onclick=()=>{S=k;load()};tb.append(b)});
 const L=$('#list');L.textContent='';if(!j.comments.length)L.append(el('p','m','Không có bình luận.'));
 j.comments.forEach(c=>{const d=el('div','c');const m=el('div','m',c.name+' · '+(c.email||'không để email')+' · bài: '+c.slug+' · '+c.created_at+' UTC ');m.append(el('span','st',c.status));d.append(m,el('div','b',c.body));
 const a=el('div','a');[['approve','Duyệt','ok'],['reject','Từ chối',''],['delete','Xóa','no']].forEach(([ac,l,cl])=>{const b=el('button',cl,l);b.onclick=async()=>{if(ac==='delete'&&!confirm('Xóa vĩnh viễn bình luận này?'))return;await api('/api/admin/action',{method:'POST',body:JSON.stringify({id:c.id,action:ac})});load()};a.append(b)});d.append(a);L.append(d)})}
+catch(e){T='';sessionStorage.removeItem('t');$('#login').hidden=false;$('#app').hidden=true;alert(e.message)}}
+async function tabs(){const tb=$('#tabs');tb.textContent='';[['pending','Chờ duyệt'],['approved','Đã duyệt'],['rejected','Từ chối'],['all','Tất cả'],['leads','Yêu cầu tư vấn']].forEach(([k,v])=>{const b=el('button',k===S?'on':'',v);b.onclick=()=>{S=k;load()};tb.append(b)})}
+async function loadLeads(){try{const j=await api('/api/admin/leads');$('#login').hidden=true;$('#app').hidden=false;await tabs();const L=$('#list');L.textContent='';if(!j.leads.length)L.append(el('p','m','Chưa có yêu cầu tư vấn.'));
+j.leads.forEach(c=>{const d=el('div','c');const m=el('div','m',c.created_at+' UTC · ');m.append(el('span','st',c.status==='done'?'đã liên hệ':'mới'));d.append(m);
+[['Họ tên',c.name],['Điện thoại',c.phone],['Email',c.email],['Công ty',c.company],['Quan tâm',c.interest]].forEach(([k,v])=>{if(v)d.append(el('div','b',k+': '+v))});if(c.message)d.append(el('div','b','Nội dung: '+c.message));
+const a=el('div','a');[[c.status==='done'?'new':'done',c.status==='done'?'Đánh dấu chưa liên hệ':'Đã liên hệ','ok'],['delete','Xóa','no']].forEach(([ac,l,cl])=>{const b=el('button',cl,l);b.onclick=async()=>{if(ac==='delete'&&!confirm('Xóa vĩnh viễn yêu cầu này?'))return;await api('/api/admin/lead-action',{method:'POST',body:JSON.stringify({id:c.id,action:ac})});load()};a.append(b)});d.append(a);L.append(d)})}
 catch(e){T='';sessionStorage.removeItem('t');$('#login').hidden=false;$('#app').hidden=true;alert(e.message)}}
 $('#go').onclick=()=>{T=$('#pw').value;sessionStorage.setItem('t',T);load()};
 $('#sv').onclick=async()=>{try{await api('/api/admin/settings',{method:'POST',body:JSON.stringify({notify_email:$('#ne').value})});$('#svm').textContent='Đã lưu.'}catch(e){$('#svm').textContent=e.message}};
@@ -150,6 +202,7 @@ export default {
       if (p === '/admin') return new Response(ADMIN_HTML, { headers: { 'Content-Type': 'text/html; charset=utf-8', 'X-Robots-Tag': 'noindex', 'Cache-Control': 'no-store' } });
       if (p === '/api/comments' && req.method === 'GET') return await listComments(req, env);
       if (p === '/api/comments' && req.method === 'POST') return await postComment(req, env);
+      if (p === '/api/contact' && req.method === 'POST') return await postContact(req, env);
       if (p.startsWith('/api/admin/')) return await admin(req, env, p);
       return json(req, { error: 'Không tìm thấy.' }, 404);
     } catch (e) {

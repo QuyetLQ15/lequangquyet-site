@@ -266,10 +266,10 @@ open(os.path.join(ROOT,'404.html'),'w',encoding='utf-8').write('''<!doctype html
 # cache-busting: gắn số phiên bản vào đường dẫn CSS và JS để trình duyệt luôn tải bản mới sau khi bạn sửa
 import hashlib
 def _ver(f): return hashlib.md5(open(os.path.join(ROOT,'assets',f),'rb').read()).hexdigest()[:8]
-_V={'style.css':_ver('style.css'),'site.js':_ver('site.js'),'comments.js':_ver('comments.js')}
+_V={'style.css':_ver('style.css'),'site.js':_ver('site.js'),'comments.js':_ver('comments.js'),'lead.js':_ver('lead.js')}
 def _bust(path):
     t=open(path,encoding='utf-8').read()
-    n=re.sub(r'(assets/(style\.css|site\.js|comments\.js))(\?v=[0-9a-f]+)?(?=")',lambda m:m.group(1)+'?v='+_V[m.group(2)],t)
+    n=re.sub(r'(assets/(style\.css|site\.js|comments\.js|lead\.js))(\?v=[0-9a-f]+)?(?=")',lambda m:m.group(1)+'?v='+_V[m.group(2)],t)
     if n!=t: open(path,'w',encoding='utf-8').write(n)
 for _d,_,_fs in os.walk(ROOT):
     if set(os.path.relpath(_d,ROOT).replace('\\','/').split('/'))&{'.git','.idea','content','tools'}: continue

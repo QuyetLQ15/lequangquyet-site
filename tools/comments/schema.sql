@@ -12,3 +12,9 @@ CREATE INDEX IF NOT EXISTS idx_comments_slug ON comments(slug, status);
 CREATE INDEX IF NOT EXISTS idx_comments_ip ON comments(ip_hash, created_at);
 CREATE TABLE IF NOT EXISTS settings (k TEXT PRIMARY KEY, v TEXT);
 INSERT OR IGNORE INTO settings(k,v) VALUES ('notify_email','quyetlq@mpt.com.vn');
+CREATE TABLE IF NOT EXISTS leads (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT NOT NULL, phone TEXT, email TEXT, company TEXT, interest TEXT, message TEXT,
+  status TEXT NOT NULL DEFAULT 'new', ip_hash TEXT,
+  created_at TEXT NOT NULL DEFAULT (datetime('now'))
+);
