@@ -53,11 +53,25 @@ $body
 <a href="$share_fb" target="_blank" rel="noopener">Facebook</a>
 <button type="button" data-copy="$canon_js">Sao chép liên kết</button>
 $linkedin</div>
+<section class="cmt" id="binh-luan" aria-labelledby="h-cmt">
+<h2 id="h-cmt">Bình luận <span class="cmt-count"></span></h2>
+<div class="cmt-list" aria-live="polite"></div>
+<form novalidate>
+<label>Tên của bạn *<input name="name" maxlength="60" required autocomplete="name"></label>
+<label>Bình luận *<textarea name="body" maxlength="2000" required></textarea></label>
+<label>Email (không bắt buộc)<input name="email" type="email" maxlength="120" autocomplete="email"><small>Email chỉ để tôi liên hệ trao đổi lại, không hiển thị công khai và không chia sẻ cho ai.</small></label>
+<div class="hp" aria-hidden="true"><label>Website<input name="website" tabindex="-1" autocomplete="off"></label></div>
+<div class="cmt-ts"></div>
+<button type="submit">Gửi bình luận</button>
+<p class="cmt-msg" role="status"></p>
+</form>
+</section>
 <div class="pn-wrap" role="navigation" aria-label="Bài trước và bài sau">$prev $next</div>
 </article>
 </main>
 $footer
 $float
 <script src="../../assets/site.js"></script>
+<script src="../../assets/comments.js" defer></script>
 </body>
 </html>
