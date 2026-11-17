@@ -257,9 +257,20 @@ EN_STARTS=[(4,'When the hotline is always overloaded','Why do so many contact ce
 def CE(n,**kw): return Template(open(os.path.join(ROOT,'tools',n+'.html'),encoding='utf-8').read()).substitute(**kw)
 _trb=html.escape(tr('blog/')); _tra=html.escape(tr('hoat-dong/'))
 _st=''.join('<li><span class="tag">%s</span><div><h3><a href="%s" rel="nofollow">%s</a></h3><p>%s</p></div></li>\n'%(html.escape(tg),html.escape(tr(url(by[(1,n)]))),html.escape(t),html.escape(sm)) for n,tg,t,sm in EN_STARTS if (1,n) in by)
+EN_ACTS={'chuong-trinh-20-10':('Activity',"Women's Day (20/10) at MPT: Strong, Confident, Shining",'MPT office','On 20/10, the MPT team gave flowers, gifts and wishes to our female colleagues, with a greeting clip and two mascots joining in.'),
+'vietnam-retail-banking-forum-2026':('Industry event','Vietnam Retail Banking Forum 2026 and Growthverse Finance Day 2026','Rex Hotel Saigon, Ho Chi Minh City','On 30 September I attended two events back to back: Vietnam Retail Banking Forum 2026 in the morning and Growthverse Finance Day 2026 in the afternoon.'),
+'chuong-trinh-trung-thu-2026':('Activity','Dream Mid-Autumn 2026 at 1 June Special School','Khanh Hoi Ward, Ho Chi Minh City','With the Khanh Hoi Ward Youth Union and kind donors, we organised a Mid-Autumn programme for the children at 1 June Special School.')}
+def _etile(a):
+    tg,t,pl,sm=EN_ACTS.get(a['slug'],(a['tag'],a['title'],a.get('place',''),a.get('summary','')))
+    cov=a.get('cover','')
+    img=('<img src="../%s" alt="%s" loading="lazy" decoding="async"%s>'%(html.escape(cov),html.escape(t),dims(cov))) if cov else ''
+    d=datetime.date.fromisoformat(a['date']).strftime('%d %b %Y') if a.get('date') else ''
+    meta=d+((' · '+html.escape(pl)) if pl and pl!='Đang cập nhật' else '')
+    return '<a class="tile" data-t="%s" href="%s" rel="nofollow"><span class="tile-img%s">%s</span><span class="tile-shade"></span><span class="tile-in"><span class="tag">%s</span><strong>%s</strong><span class="tile-meta">%s</span><em>%s</em></span></a>\n'%(tkey[a['tag']],html.escape(tr(aurl(a))),'' if cov else ' noimg',img,html.escape(tg),html.escape(t),meta,html.escape(sm))
+_ea=''.join(_etile(a) for a in acts[:3])
 E=open(os.path.join(ROOT,'tools','en_index.html'),encoding='utf-8').read()
 E=E.replace('<!--HEADER_EN-->',CE('header_en',tr_blog=_trb,tr_act=_tra)).replace('<!--FOOT_EN-->',CE('footer_en',tr_blog=_trb,tr_act=_tra)).replace('<!--FLOAT_EN-->',open(os.path.join(ROOT,'tools','float_en.html'),encoding='utf-8').read())
-E=E.replace('<!--START_EN-->','<ul class="posts">\n'+_st+'</ul>').replace('__TR_BLOG__',_trb).replace('__TR_ACT__',_tra).replace('__POSTS__',str(len(posts))).replace('__YEARS__',str(datetime.date.today().year-2016)).replace('__TODAY__',TODAY)
+E=E.replace('<!--ACT_EN-->','\n'+(_ea or '<p>Content is being updated.</p>\n')).replace('<!--START_EN-->','<ul class="posts">\n'+_st+'</ul>').replace('__TR_BLOG__',_trb).replace('__TR_ACT__',_tra).replace('__POSTS__',str(len(posts))).replace('__YEARS__',str(datetime.date.today().year-2016)).replace('__TODAY__',TODAY)
 os.makedirs(os.path.join(ROOT,'en'),exist_ok=True)
 open(os.path.join(ROOT,'en','index.html'),'w',encoding='utf-8').write(E)
 _sm=open(os.path.join(ROOT,'sitemap.xml'),encoding='utf-8').read()
