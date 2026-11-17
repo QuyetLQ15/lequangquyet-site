@@ -11,6 +11,8 @@ from urllib.parse import quote
 ROOT=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE='https://lequangquyet.com'
 TODAY=datetime.date.today().isoformat()
+TRHOST='lequangquyet-com.translate.goog'
+def tr(path): return 'https://%s/%s?_x_tr_sl=vi&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=wapp'%(TRHOST,path)
 def parse(path):
     t=open(path,encoding='utf-8').read(); m=re.match(r'---\n(.*?)\n---\n(.*)',t,re.S); meta={}
     for line in m.group(1).split('\n'):
@@ -94,7 +96,7 @@ for i,m in enumerate(posts):
     page=ART.substitute(title=html.escape(m['title'])+' | Lê Quang Quyết',desc=html.escape(desc(m['body'])),canon=canon,h1=html.escape(m['title']),
         crumb='%s · Mùa %d'%(html.escape(m['series']),m['season']),chapter=html.escape(m['chapter']),date=fmt(m['date']),iso=m['date'] or '',mins=mins,body=render(m['body'],'../../'),cover=cover_html,ogimage_tags=ogtags,meta=' · '.join(([('<time datetime="%s">%s</time>'%(m['date'],fmt(m['date'])))] if m['date'] else [])+['%d phút đọc'%mins,'Lê Quang Quyết']),pubmeta=('<meta property="article:published_time" content="%s">'%m['date']) if m['date'] else '',
         ld=json.dumps(ld,ensure_ascii=False),share_li='https://www.linkedin.com/sharing/share-offsite/?url='+quote(canon,safe=''),share_fb='https://www.facebook.com/sharer/sharer.php?u='+quote(canon,safe=''),
-        canon_js=canon,header=C('header','../../'),footer=C('footer','../../'),float=C('float','../../'),prev=pn(prv,'Bài trước','pn'),next=pn(nxt,'Bài sau','pn r'),linkedin=li)
+        canon_js=canon,header=C('header','../../'),footer=C('footer','../../'),float=C('float','../../'),prev=pn(prv,'Bài trước','pn'),next=pn(nxt,'Bài sau','pn r'),linkedin=li,translate_url=html.escape(tr(url(m))))
     d=os.path.join(ROOT,url(m)); os.makedirs(d,exist_ok=True); open(os.path.join(d,'index.html'),'w',encoding='utf-8').write(page)
 # trang chủ
 S=open(os.path.join(ROOT,'index.html'),encoding='utf-8').read()
@@ -246,10 +248,29 @@ if _m:
         _h=_h[:_m.start(2)]+'\n'+json.dumps(_d,ensure_ascii=False,indent=1)+'\n'+_h[_m.end(2):]
         open(os.path.join(ROOT,'index.html'),'w',encoding='utf-8').write(_h)
     except ValueError: pass
+# ---- bản tiếng Anh của trang chủ: /en/ (nội dung ở tools/en_index.html; các bài viết dẫn tới bản dịch tự động của Google)
+EN_STARTS=[(4,'When the hotline is always overloaded','Why do so many contact centers stay overloaded?','Overload is rarely just a shortage of people. What is really making the queue longer?'),
+(3,'When the metrics look good but customers still complain','Many contact centers are measuring the wrong KPIs','Why pushing handling time down can make customers call back more, and which metrics show whether the issue was resolved.'),
+(7,'When QA hears only a small part of the calls','How does QA work in a contact center?','What QA does in a bank, and why hearing only a small share of calls is not enough.'),
+(21,'When a big investment does not take off','Why do so many contact center projects fail?','Good technology, yet the project is slow and below expectations. Where is the bottleneck usually?'),
+(10,'When people say AI will replace humans','Can a voicebot replace agents?','The straight answer is no. AI should take the repetitive work so people can do the work that needs thinking.')]
+def CE(n,**kw): return Template(open(os.path.join(ROOT,'tools',n+'.html'),encoding='utf-8').read()).substitute(**kw)
+_trb=html.escape(tr('blog/')); _tra=html.escape(tr('hoat-dong/'))
+_st=''.join('<li><span class="tag">%s</span><div><h3><a href="%s" rel="nofollow">%s</a></h3><p>%s</p></div></li>\n'%(html.escape(tg),html.escape(tr(url(by[(1,n)]))),html.escape(t),html.escape(sm)) for n,tg,t,sm in EN_STARTS if (1,n) in by)
+E=open(os.path.join(ROOT,'tools','en_index.html'),encoding='utf-8').read()
+E=E.replace('<!--HEADER_EN-->',CE('header_en',tr_blog=_trb,tr_act=_tra)).replace('<!--FOOT_EN-->',CE('footer_en',tr_blog=_trb,tr_act=_tra)).replace('<!--FLOAT_EN-->',open(os.path.join(ROOT,'tools','float_en.html'),encoding='utf-8').read())
+E=E.replace('<!--START_EN-->','<ul class="posts">\n'+_st+'</ul>').replace('__TR_BLOG__',_trb).replace('__TR_ACT__',_tra).replace('__POSTS__',str(len(posts))).replace('__YEARS__',str(datetime.date.today().year-2016)).replace('__TODAY__',TODAY)
+os.makedirs(os.path.join(ROOT,'en'),exist_ok=True)
+open(os.path.join(ROOT,'en','index.html'),'w',encoding='utf-8').write(E)
+_sm=open(os.path.join(ROOT,'sitemap.xml'),encoding='utf-8').read()
+_sm=_sm.replace('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">','<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">')
+_alt='<xhtml:link rel="alternate" hreflang="vi" href="%s/"/><xhtml:link rel="alternate" hreflang="en" href="%s/en/"/>'%(SITE,SITE)
+_sm=_sm.replace('<url><loc>%s/</loc><lastmod>%s</lastmod></url>'%(SITE,TODAY),'<url><loc>%s/</loc><lastmod>%s</lastmod>%s</url>\n  <url><loc>%s/en/</loc><lastmod>%s</lastmod>%s</url>'%(SITE,TODAY,_alt,SITE,TODAY,_alt),1)
+open(os.path.join(ROOT,'sitemap.xml'),'w',encoding='utf-8').write(_sm)
 # llms.txt: bản tóm tắt site cho công cụ AI, tự tạo từ danh sách bài viết
 _L=['# Lê Quang Quyết','','> Banking Solutions Sales Manager tại Minh Phúc Transformation (MPT). Chia sẻ giải pháp chăm sóc khách hàng đa kênh cho nhóm BFSI (ngân hàng, bảo hiểm, tài chính).','',
 'Trang cá nhân của Lê Quang Quyết (Quyet Le). Nội dung bằng tiếng Việt, quan điểm trình bày là của cá nhân tác giả.','','## Trang chính','',
-'- [Trang chủ](%s/): giới thiệu, giải pháp và hoạt động'%SITE,'- [Blog](%s/blog/): chuỗi bài Contact Center Insights'%SITE]
+'- [Trang chủ](%s/): giới thiệu, giải pháp và hoạt động'%SITE,'- [Blog](%s/blog/): chuỗi bài Contact Center Insights'%SITE,'- [English homepage](%s/en/): introduction in English'%SITE]
 if acts: _L.append('- [Hoạt động](%s/hoat-dong/): chương trình và sự kiện'%SITE)
 _L+=['','## Bài viết','']+['- [%s](%s/%s)'%(m['title'],SITE,url(m)) for m in posts]
 _L+=['','## Liên hệ','','- Email: quyetlq@mpt.com.vn','- LinkedIn: https://www.linkedin.com/in/quyetlq','']

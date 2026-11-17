@@ -61,3 +61,7 @@ if(innerHeight+scrollY>=document.documentElement.scrollHeight-4){curMenu(map[map
 map.forEach(function(m){if(m.s.getBoundingClientRect().top<=line)best=m.a});curMenu(best)}
 addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(spy)}},{passive:true});spy()}}
 })();
+(function(){var w=document.querySelector('.langsw');if(!w)return;var vi=w.querySelector('[data-lang=vi]'),en=w.querySelector('[data-lang=en]'),p=location.pathname.replace(/index\.html$/,''),h=location.hostname;
+if(/translate\.goog$/.test(h)){vi.classList.remove('on');vi.removeAttribute('aria-current');vi.href='https://lequangquyet.com'+p;en.classList.add('on');en.setAttribute('aria-current','true');en.removeAttribute('href');return}
+if(p==='/'||p==='/index.html'||/^\/en\//.test(p)||document.querySelector('meta[name=robots][content=noindex]'))return;
+en.href='https://lequangquyet-com.translate.goog'+p+'?_x_tr_sl=vi&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=wapp'})();

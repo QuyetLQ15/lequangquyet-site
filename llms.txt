@@ -8,6 +8,7 @@ Trang cá nhân của Lê Quang Quyết (Quyet Le). Nội dung bằng tiếng Vi
 
 - [Trang chủ](https://lequangquyet.com/): giới thiệu, giải pháp và hoạt động
 - [Blog](https://lequangquyet.com/blog/): chuỗi bài Contact Center Insights
+- [English homepage](https://lequangquyet.com/en/): introduction in English
 - [Hoạt động](https://lequangquyet.com/hoat-dong/): chương trình và sự kiện
 
 ## Bài viết
