@@ -709,3 +709,17 @@ body{overflow-x:clip;max-width:100vw;position:relative}
 @media(max-width:620px){.lead-g{grid-template-columns:1fr}.lead-form{padding:22px 18px}}
 .lead-form button:disabled{opacity:1;background:#c9d2de;color:#7a8799;box-shadow:none;cursor:not-allowed;filter:none}
 .lead-form .ck input{accent-color:#0E7C86}
+
+/* Form tư vấn: gọn hơn */
+.lead-form{max-width:600px;margin-top:26px;padding:18px 20px 16px;border-radius:16px}
+.lead-form h3{margin:0 0 10px;font-size:1rem}
+.lead-g{gap:8px 10px}
+.lead-form label{font-size:.78rem;gap:3px}
+.lead-form input,.lead-form select,.lead-form textarea{padding:7px 10px;font-size:.9rem;border-radius:8px}
+.lead-form textarea{min-height:56px}
+.lead-form .ck{font-size:.78rem;margin-top:8px;line-height:1.45}
+.lead-form button{margin-top:10px;padding:9px 22px;font-size:.92rem}
+.lead-msg{margin:8px 0 0;font-size:.88rem}
+@media(max-width:620px){.lead-form{padding:16px 14px}}
+.lead-form input,.lead-form select,.lead-form textarea{line-height:1.3}
+.lead-form label{line-height:1.3}
