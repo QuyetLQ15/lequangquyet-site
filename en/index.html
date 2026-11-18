@@ -37,15 +37,119 @@
 {
  "@context": "https://schema.org",
  "@graph": [
-  {"@type": "WebSite", "@id": "https://lequangquyet.com/en/#website", "url": "https://lequangquyet.com/en/", "name": "Lê Quang Quyết", "inLanguage": "en", "publisher": {"@id": "https://lequangquyet.com/#person"}},
-  {"@type": "ProfilePage", "@id": "https://lequangquyet.com/en/#profilepage", "url": "https://lequangquyet.com/en/", "name": "Lê Quang Quyết (Quyet Le)", "inLanguage": "en", "isPartOf": {"@id": "https://lequangquyet.com/en/#website"}, "mainEntity": {"@id": "https://lequangquyet.com/#person"}, "dateModified": "2026-11-18"},
-  {"@type": "FAQPage", "@id": "https://lequangquyet.com/en/#faq", "inLanguage": "en", "isPartOf": {"@id": "https://lequangquyet.com/en/#website"}, "mainEntity": [
-   {"@type": "Question", "name": "Who is Lê Quang Quyết?", "acceptedAnswer": {"@type": "Answer", "text": "Banking Solutions Sales Manager at MPT, with more than 10 years in technology for banking, insurance and finance. I moved from telesales to technical support, CRM, implementation and solution consulting."}},
-   {"@type": "Question", "name": "Which solutions do I advise on?", "acceptedAnswer": {"@type": "Answer", "text": "Contact Center solutions for BFSI: Webex Contact Center, OmiBot, OmiCX and OmiQC."}},
-   {"@type": "Question", "name": "What does Contact Center Insights cover?", "acceptedAnswer": {"@type": "Answer", "text": "Practical views on running a contact center: overloaded hotlines, misread KPIs, QA and failed projects. The articles are written in Vietnamese and can be read in English through automatic translation."}},
-   {"@type": "Question", "name": "Can AI replace agents?", "acceptedAnswer": {"@type": "Answer", "text": "No. AI takes over repetitive work so people can do the work that needs judgment."}},
-   {"@type": "Question", "name": "How can I contact you?", "acceptedAnswer": {"@type": "Answer", "text": "Message on Zalo, call +84 587 793 865 or email quyetlq@mpt.com.vn."}}
-  ]}
+  {
+   "@type": "WebSite",
+   "@id": "https://lequangquyet.com/en/#website",
+   "url": "https://lequangquyet.com/en/",
+   "name": "Lê Quang Quyết",
+   "inLanguage": "en",
+   "publisher": {
+    "@id": "https://lequangquyet.com/#person"
+   }
+  },
+  {
+   "@type": "ProfilePage",
+   "@id": "https://lequangquyet.com/en/#profilepage",
+   "url": "https://lequangquyet.com/en/",
+   "name": "Lê Quang Quyết (Quyet Le)",
+   "inLanguage": "en",
+   "isPartOf": {
+    "@id": "https://lequangquyet.com/en/#website"
+   },
+   "mainEntity": {
+    "@type": "Person",
+    "@id": "https://lequangquyet.com/#person",
+    "name": "Lê Quang Quyết",
+    "alternateName": [
+     "Quyet Le",
+     "Quyết Lê Quang",
+     "Lê Quang Quyết MPT"
+    ],
+    "url": "https://lequangquyet.com/",
+    "image": "https://lequangquyet.com/assets/avatar.jpg",
+    "description": "Banking Solutions Sales Manager tại Minh Phúc Transformation (MPT). Chia sẻ giải pháp chăm sóc khách hàng đa kênh cho nhóm BFSI (ngân hàng, bảo hiểm, tài chính).",
+    "jobTitle": "Banking Solutions Sales Manager",
+    "worksFor": {
+     "@type": "Organization",
+     "name": "Minh Phúc Transformation (MPT)",
+     "url": "https://mpt.com.vn"
+    },
+    "address": {
+     "@type": "PostalAddress",
+     "addressLocality": "Thành phố Hồ Chí Minh",
+     "addressCountry": "VN"
+    },
+    "alumniOf": {
+     "@type": "CollegeOrUniversity",
+     "name": "Đại học Công nghiệp Thành phố Hồ Chí Minh"
+    },
+    "knowsAbout": [
+     "Contact Center",
+     "BFSI",
+     "Chatbot",
+     "Voicebot",
+     "Speech Analytics",
+     "Omnichannel",
+     "Quality Assurance",
+     "CRM"
+    ],
+    "sameAs": [
+     "https://www.linkedin.com/in/quyetlq",
+     "https://www.facebook.com/naoa.lee.5"
+    ]
+   },
+   "dateModified": "2026-11-18T00:00:00+07:00"
+  },
+  {
+   "@type": "FAQPage",
+   "@id": "https://lequangquyet.com/en/#faq",
+   "inLanguage": "en",
+   "isPartOf": {
+    "@id": "https://lequangquyet.com/en/#website"
+   },
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Who is Lê Quang Quyết?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Banking Solutions Sales Manager at MPT, with more than 10 years in technology for banking, insurance and finance. I moved from telesales to technical support, CRM, implementation and solution consulting."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Which solutions do I advise on?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Contact Center solutions for BFSI: Webex Contact Center, OmiBot, OmiCX and OmiQC."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What does Contact Center Insights cover?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Practical views on running a contact center: overloaded hotlines, misread KPIs, QA and failed projects. The articles are written in Vietnamese and can be read in English through automatic translation."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Can AI replace agents?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "No. AI takes over repetitive work so people can do the work that needs judgment."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "How can I contact you?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Message on Zalo, call +84 587 793 865 or email quyetlq@mpt.com.vn."
+     }
+    }
+   ]
+  }
  ]
 }
 </script>

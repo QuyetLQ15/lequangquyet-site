@@ -273,6 +273,32 @@ E=E.replace('<!--HEADER_EN-->',CE('header_en',tr_blog=_trb,tr_act=_tra)).replace
 E=E.replace('<!--ACT_EN-->','\n'+(_ea or '<p>Content is being updated.</p>\n')).replace('<!--START_EN-->','<ul class="posts">\n'+_st+'</ul>').replace('__TR_BLOG__',_trb).replace('__TR_ACT__',_tra).replace('__POSTS__',str(len(posts))).replace('__YEARS__',str(datetime.date.today().year-2016)).replace('__TODAY__',TODAY)
 os.makedirs(os.path.join(ROOT,'en'),exist_ok=True)
 open(os.path.join(ROOT,'en','index.html'),'w',encoding='utf-8').write(E)
+# ---- sửa lỗi Search Console (Profile page): mainEntity phải là đối tượng Person đầy đủ, dateModified phải có giờ + múi giờ
+def _ld_fix(path, person):
+    h=open(path,encoding='utf-8').read()
+    for m in re.finditer(r'(<script type="application/ld\+json">)(.*?)(</script>)',h,re.S):
+        try: d=json.loads(m.group(2))
+        except ValueError: continue
+        g=d.get('@graph')
+        if not g: continue
+        ch=False
+        for n in g:
+            if n.get('@type')=='ProfilePage' and person:
+                n['mainEntity']=person; n['dateModified']=TODAY+'T00:00:00+07:00'; ch=True
+        if ch:
+            h=h[:m.start(2)]+'\n'+json.dumps(d,ensure_ascii=False,indent=1)+'\n'+h[m.end(2):]
+            open(path,'w',encoding='utf-8').write(h)
+        return
+_vp=os.path.join(ROOT,'index.html')
+_P=None
+for _m2 in re.finditer(r'<script type="application/ld\+json">(.*?)</script>',open(_vp,encoding='utf-8').read(),re.S):
+    try:
+        for _n in json.loads(_m2.group(1)).get('@graph',[]):
+            if _n.get('@type')=='Person': _P=_n
+    except ValueError: pass
+if _P:
+    _ld_fix(_vp,_P)
+    _ld_fix(os.path.join(ROOT,'en','index.html'),_P)
 _sm=open(os.path.join(ROOT,'sitemap.xml'),encoding='utf-8').read()
 _sm=_sm.replace('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">','<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">')
 _alt='<xhtml:link rel="alternate" hreflang="vi" href="%s/"/><xhtml:link rel="alternate" hreflang="en" href="%s/en/"/>'%(SITE,SITE)
