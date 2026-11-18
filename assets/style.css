@@ -739,3 +739,8 @@ body{overflow-x:clip;max-width:100vw;position:relative}
 .langsw a:not(.on):hover{background:#eaf6f7}
 @media(max-width:900px){.langsw{order:2}}
 @media(max-width:480px){.bar{gap:8px}.brand{font-size:.92rem}.cbtn{padding:8px 12px;font-size:.86rem}.langsw a{padding:7px 8px;font-size:.72rem}.burger{width:38px;height:38px}}
+
+
+/* ===== Chữ gradient vẫn đọc được khi trình duyệt tự ép chế độ tối (Samsung Internet...) ===== */
+.big{background:linear-gradient(90deg,#0E7C86,#3b82f6);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.stat b{background:linear-gradient(120deg,#0E7C86,#2bb5bd);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
