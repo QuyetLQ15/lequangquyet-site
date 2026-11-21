@@ -1,25 +1,25 @@
 ---
-title: Go-live Cisco Contact Center kết hợp OmiCX của MPT cho MobiFone trên phạm vi toàn quốc
+title: Go-live tổng đài Cisco kết hợp OmiCX cho KH MobiFone trên phạm vi toàn quốc
 slug: go-live-cisco-omicx-mobifone
 date: 2026-11-21
 place: Toàn quốc
 tag: Dự án
-summary: Cột mốc go-live bộ giải pháp Cisco Contact Center kết hợp OmiCX của MPT cho MobiFone, với các đội ngũ phối hợp từ Hà Nội, Hải Phòng, Đà Nẵng, TP. Hồ Chí Minh đến Cần Thơ.
+summary: Cột mốc go-live tổng đài Cisco kết hợp OmiCX của MPT cho khách hàng MobiFone, với các đội ngũ phối hợp từ Hà Nội, Hải Phòng, Đà Nẵng, TP. Hồ Chí Minh đến Cần Thơ.
 cover: assets/hoat-dong/go-live-cisco-omicx-mobifone/cover.jpg
 cover_alt: Tôi chụp ảnh tại điểm cầu go-live cho MobiFone, phía sau là các điện thoại viên đang làm việc
 published: yes
 linkedin:
 ---
 
-Chính thức go-live bộ giải pháp Cisco Contact Center kết hợp OmiCX của MPT cho MobiFone trên phạm vi toàn quốc!
+Chính thức go-live bộ giải pháp tổng đài Cisco kết hợp OmiCX của MPT cho MobiFone trên phạm vi toàn quốc!
 
 Từ Hà Nội, Hải Phòng, Đà Nẵng, TP. Hồ Chí Minh đến Cần Thơ, anh em mỗi người một điểm cầu, nhưng tất cả cùng hướng về một mục tiêu chung: đưa hệ thống vào vận hành thành công.
 
-## Vì sao là Cisco Contact Center kết hợp OmiCX
+## Vì sao là tổng đài Cisco kết hợp OmiCX
 
 Với một đơn vị có mạng lưới tổng đài trải dài nhiều tỉnh thành như MobiFone, bài toán không chỉ là tiếp nhận cuộc gọi, mà là để mọi điểm cầu cùng vận hành trên một hệ thống thống nhất.
 
-- **Cisco Contact Center** là nền tảng tổng đài của Cisco, lo phần tiếp nhận và điều phối cuộc gọi cho các điểm cầu.
+- **Tổng đài Cisco** là nền tảng của Cisco, lo phần tiếp nhận và điều phối cuộc gọi cho các điểm cầu.
 - **OmiCX** là nền tảng contact center đa kênh ứng dụng AI do MPT phát triển. OmiCX gom thoại, Zalo, Facebook, email về một nền tảng để agent xử lý nhanh hơn và supervisor nhìn thấy toàn cảnh.
 - **Kết hợp lại**, MobiFone có một hệ thống cho nhiều điểm cầu, nhiều đội ngũ, đủ mạnh về hạ tầng và linh hoạt về trải nghiệm cho cả agent lẫn người giám sát.
 
