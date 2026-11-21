@@ -27,6 +27,19 @@ def dims(path):
     try:
         w,h=Image.open(os.path.join(ROOT,path)).size; return ' width="%d" height="%d"'%(w,h)
     except Exception: return ''
+def share_img(cov):
+    """Cắt ảnh bìa thành khung 1200x630 (đúng khung xem trước Facebook/LinkedIn), lưu ở assets/share/. Trả về đường dẫn tương đối."""
+    if Image is None or not cov: return cov
+    try:
+        src=os.path.join(ROOT,cov); name=re.sub(r'[^A-Za-z0-9]+','-',os.path.splitext(cov)[0]).strip('-')+'.jpg'
+        rel='assets/share/'+name; dst=os.path.join(ROOT,rel)
+        if os.path.exists(dst) and os.path.getmtime(dst)>=os.path.getmtime(src): return rel
+        im=Image.open(src).convert('RGB'); w,h=im.size; tw,th=1200,630
+        sc=max(tw/w,th/h); im=im.resize((max(tw,round(w*sc)),max(th,round(h*sc))),Image.LANCZOS); w,h=im.size
+        l=(w-tw)//2; t=int((h-th)*0.35)
+        os.makedirs(os.path.dirname(dst),exist_ok=True); im.crop((l,t,l+tw,t+th)).save(dst,quality=85,optimize=True,progressive=True)
+        return rel
+    except Exception: return cov
 def src_of(path,prefix): return path if re.match(r'^(https?:)?//|^/',path) else prefix+path
 def figure(alt,path,cap,prefix):
     return '<figure><img src="%s" alt="%s" loading="lazy" decoding="async"%s>%s</figure>'%(html.escape(src_of(path,prefix)),html.escape(alt),dims(path),('<figcaption>%s</figcaption>'%html.escape(cap)) if cap else '')
@@ -86,7 +99,7 @@ for i,m in enumerate(posts):
     canon='%s/%s'%(SITE,url(m)); words=len(plain(m['body']).split()); mins=max(1,round(words/200))
     cov=m.get('cover',''); ogimg=SITE+'/assets/og-image.jpg'; ogtags='<meta property="og:image" content="%s">\n<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">'%ogimg; cover_html=''
     if cov:
-        ogimg=SITE+'/'+cov; dm=re.search(r'width="(\d+)" height="(\d+)"',dims(cov))
+        ogimg=SITE+'/'+share_img(cov); dm=re.search(r'(\d+)x(\d+)','1200x630')
         ogtags='<meta property="og:image" content="%s">'%ogimg+('\n<meta property="og:image:width" content="%s">\n<meta property="og:image:height" content="%s">'%dm.groups() if dm else '')+'\n<meta property="og:image:alt" content="%s">'%html.escape(m.get('cover_alt') or m['title'])
         cover_html='<figure class="cover"><img src="../../%s" alt="%s" fetchpriority="high" decoding="async"%s></figure>'%(html.escape(cov),html.escape(m.get('cover_alt') or m['title']),dims(cov))
     ld={"@context":"https://schema.org","@type":"BlogPosting","headline":m['title'],"inLanguage":"vi-VN","datePublished":m['date'] or None,"dateModified":m['date'] or None,"mainEntityOfPage":canon,"image":ogimg,"author":{"@id":SITE+"/#person"},"isPartOf":{"@type":"Blog","name":m["series"]}}
@@ -211,7 +224,7 @@ for i,a in enumerate(acts):
     canon='%s/%s'%(SITE,aurl(a)); cov=a.get('cover',''); ogimg=SITE+'/assets/og-image.jpg'
     ogtags='<meta property="og:image" content="%s">\n<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">'%ogimg; cover_html=''
     if cov:
-        ogimg=SITE+'/'+cov; dm=re.search(r'width="(\d+)" height="(\d+)"',dims(cov))
+        ogimg=SITE+'/'+share_img(cov); dm=re.search(r'(\d+)x(\d+)','1200x630')
         ogtags='<meta property="og:image" content="%s">'%ogimg+('\n<meta property="og:image:width" content="%s">\n<meta property="og:image:height" content="%s">'%dm.groups() if dm else '')
         cover_html='<figure class="cover"><img src="../../%s" alt="%s" fetchpriority="high" decoding="async"%s></figure>'%(html.escape(cov),html.escape(a.get('cover_alt') or a['title']),dims(cov))
     ld={"@context":"https://schema.org","@type":"Article","headline":a['title'],"inLanguage":"vi-VN","datePublished":a.get('date') or None,"mainEntityOfPage":canon,"image":ogimg,"author":{"@id":SITE+"/#person"}}

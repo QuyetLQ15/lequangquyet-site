@@ -65,3 +65,7 @@ addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(spy)}
 if(/translate\.goog$/.test(h)){vi.classList.remove('on');vi.removeAttribute('aria-current');vi.href='https://lequangquyet.com'+p;en.classList.add('on');en.setAttribute('aria-current','true');en.removeAttribute('href');return}
 if(p==='/'||p==='/index.html'||/^\/en\//.test(p)||document.querySelector('meta[name=robots][content=noindex]'))return;
 en.href='https://lequangquyet-com.translate.goog'+p+'?_x_tr_sl=vi&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=wapp'})();
+
+/* nút "Zalo & ứng dụng khác": mở bảng chia sẻ của điện thoại (có Zalo, Messenger...), chỉ hiện khi trình duyệt hỗ trợ */
+(function(){var b=document.querySelector('[data-share]');if(!b||!navigator.share)return;b.hidden=false;
+b.addEventListener('click',function(){navigator.share({title:document.title,url:b.dataset.share}).catch(function(){})})})();
